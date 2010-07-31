@@ -13,21 +13,21 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="/Libs/lib/antlr-2.7.6.jar"/>
-	<classpathentry kind="lib" path="/Libs/lib/commons-collections-3.1.jar"/>
-	<classpathentry kind="lib" path="/Libs/lib/dom4j.jar"/>
-	<classpathentry kind="lib" path="/Libs/lib/ejb3-persistence.jar"/>
-	<classpathentry kind="lib" path="/Libs/lib/hibernate-annotations.jar"/>
-	<classpathentry kind="lib" path="/Libs/lib/hibernate-commons-annotations.jar"/>
-	<classpathentry kind="lib" path="/Libs/lib/hibernate-entitymanager.jar"/>
-	<classpathentry kind="lib" path="/Libs/lib/hibernate3.jar"/>
-	<classpathentry kind="lib" path="/Libs/lib/javassist-3.9.0.GA.jar"/>
-	<classpathentry kind="lib" path="/Libs/lib/jsf-api.jar"/>
-	<classpathentry kind="lib" path="/Libs/lib/jsf-impl.jar"/>
-	<classpathentry kind="lib" path="/Libs/lib/jta-1.1.jar"/>
-	<classpathentry kind="lib" path="/Libs/lib/log4j.jar"/>
-	<classpathentry kind="lib" path="/Libs/lib/mysql-connector-java-5.0.8-bin.jar"/>
-	<classpathentry kind="lib" path="/Libs/lib/slf4j-api-1.5.8.jar"/>
-	<classpathentry kind="lib" path="/Libs/lib/slf4j-log4j12.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Libs/lib/antlr-2.7.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Libs/lib/commons-collections-3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Libs/lib/dom4j.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Libs/lib/ejb3-persistence.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Libs/lib/hibernate-annotations.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Libs/lib/hibernate-commons-annotations.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Libs/lib/hibernate-entitymanager.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Libs/lib/hibernate3.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Libs/lib/javassist-3.9.0.GA.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Libs/lib/jsf-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Libs/lib/jsf-impl.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Libs/lib/jta-1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Libs/lib/log4j.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Libs/lib/mysql-connector-java-5.0.8-bin.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Libs/lib/slf4j-api-1.5.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Libs/lib/slf4j-log4j12.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
