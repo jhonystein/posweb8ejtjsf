@@ -22,7 +22,7 @@ public class UsuarioUC {
 	private Usuario usuarioLogado = null;
     private UIData select;
     
-    private UsuarioUC() {
+    public UsuarioUC() {
     }
    
     public UIData getSelect() {

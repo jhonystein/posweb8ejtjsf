@@ -17,7 +17,7 @@ public class ProjetorUC {
 	private Projetor projetor = new Projetor();
     private UIData select;
     
-    public ProjetorUC() throws Exception{
+    public ProjetorUC() {
     }
    
     public UIData getSelect() {

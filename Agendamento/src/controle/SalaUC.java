@@ -17,7 +17,7 @@ public class SalaUC {
 	private Sala sala = new Sala();
     private UIData select;
     
-    public SalaUC() throws Exception{
+    public SalaUC() {
     }
    
     public UIData getSelect() {
