@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:composition template="TemplatePadrao.xhtml">
+        <ui:param name="titulo" value="Cadastro de Projetores"/>
+        <ui:define name="corpo">
+			<h:form>
+				<h:panelGrid columns="3">
+				    <h:outputLabel value="N&uacute;mero do Patrim&ocirc;nio"/>
+					<h:outputText id="patrimonio" value="#{projetorUC.projetor.numeroPatrimonio}" required="true"/>
+					<h:message for="patrimonio"/>
+		
+				    <h:outputLabel value="Campus"/>
+					<h:selectOneRadio id="campus" value="#{projetorUC.projetor.campus}" required="true">
+						<f:selectItem itemLabel="1" itemValue="1"/>
+						<f:selectItem itemLabel="2" itemValue="2"/>
+						<f:selectItem itemLabel="3" itemValue="3"/>
+						<f:selectItem itemLabel="4" itemValue="4"/>
+					</h:selectOneRadio>
+					<h:message for="campus"/>
+		
+				</h:panelGrid>
+			</h:form>
+			</ui:define>
+    </ui:composition>
+</html>

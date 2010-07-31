@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:composition template="TemplatePadrao.xhtml">
+        <ui:param name="titulo" value="Cadastro de Usu&aacute;rios"/>
+        <ui:define name="corpo">
+		<h:form>
+			<h:panelGrid columns="3">
+				<h:outputLabel value="Nick"/>
+				<h:outputText id="nick" value="#{usuarioUC.usuario.nick}" require="true"/>
+				<h:message for="nick"/>
+			
+			    <h:outputLabel value="Senha"/>
+				<h:outputText id="senha" value="#{usuarioUC.usuario.senha}"/>
+				<h:message for="senha"/>
+	
+			    <h:outputLabel value="E-Mail"/>
+				<h:outputText id="email" value="#{usuarioUC.usuario.email}" validator="#{usuarioUC.validarEmail}"/>
+				<h:message for="email"/>
+				
+				<h:outputLabel value="Fun&ccedil;&atilde;o"/>
+				<h:selectOneRadio id="funcao" value="#{usuarioUC.usuario.funcao}" required="true">
+					<f:selectItem itemLabel="Administrador" itemValue="a"/>
+					<f:selectItem itemLabel="Professor" itemValue="p"/>
+					<f:selectItem itemLabel="Instalador" itemValue="i"/>
+				</h:selectOneRadio>
+			</h:panelGrid>
+		</h:form>
+        </ui:define>
+    </ui:composition>
+</html>
