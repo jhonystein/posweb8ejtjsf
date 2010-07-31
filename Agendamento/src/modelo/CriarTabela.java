@@ -1,24 +1,24 @@
 package modelo;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 
-import util.VariavelGeral;
-import controle.UsuarioUC;
+import util.Config;
 
 public class CriarTabela {
 
-		public static void main(String args[]) throws ClassNotFoundException, Exception {
+		public static void main(String args[]) throws ClassNotFoundException, SQLException {
 
 			// Trecho exemplificando uso de JDBC
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "mysql");
 			Statement st = con.createStatement();
-			st.execute("drop database if exists "+VariavelGeral.BANCODADOS);
-			st.execute("create database "+VariavelGeral.BANCODADOS);
+			st.execute("drop database if exists "+Config.BANCODADOS);
+			st.execute("create database "+Config.BANCODADOS);
 			st.close();
 			con.close();
 			
@@ -34,10 +34,6 @@ public class CriarTabela {
 			
 			new SchemaExport(an).create(true, true);
 			
-			UsuarioUC controlador = new UsuarioUC();
-			controlador.getUsuario().setFuncao("a");
-			controlador.getUsuario().setNick("admin");
-			controlador.getUsuario().setSenha("admin");
-			controlador.salvar();
+			
 		}
 }

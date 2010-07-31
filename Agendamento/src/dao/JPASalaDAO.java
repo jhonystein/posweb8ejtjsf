@@ -1,37 +1,16 @@
 package dao;
 
-import java.util.List;
-
 import javax.persistence.Query;
 
+import modelo.Sala;
 import util.JPAUtil;
 
-import modelo.Sala;
-
-public class JPASalaDAO implements DAO<Sala> {
+public class JPASalaDAO extends JPACrudDao<Sala> {
 	
 	private JPAUtil util;
 
-	public JPASalaDAO() throws Exception {
-		this.util = JPAUtil.getInstance();
-	}
-	
-	@Override
-	public void gravar(Sala sala) throws Exception {
-		if (sala.getCodigo() == 0)
-			util.incluir(sala);
-		else
-			util.alterar(sala);
-	}
-
-	@Override
-	public Sala ler(long codigo) throws Exception {
-		return (Sala) util.ler(Sala.class, codigo);
-	}
-
-	@Override
-	public List<Sala> listarTodos() throws Exception {
-		return util.listarTodos(Sala.class);
+	public JPASalaDAO(JPAUtil jpa){
+		super(jpa, Sala.class);
 	}
 	
 	public boolean verificarSalaUnicaBloco(Sala sala) throws Exception{

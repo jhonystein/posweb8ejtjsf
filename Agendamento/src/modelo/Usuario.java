@@ -15,12 +15,14 @@ import javax.persistence.Table;
 @Entity
 @Table(name="usuario")
 @NamedQuery(name="usuarioLogado", query="select u from Usuario as u where u.nick = ?1 and u.senha = ?2")
-public class Usuario implements Serializable {
+public class Usuario implements IModelo, Serializable {
 
-    @Id
+	private static final long serialVersionUID = 2467153244033670115L;
+
+	@Id
     @GeneratedValue
     @Column(name="cd_usuario")
-    private int codigo;
+    private Long codigo;
 
     @Column(name="ds_nick", unique=true)
     private String nick;
@@ -40,10 +42,10 @@ public class Usuario implements Serializable {
 	public void setFuncao(String funcao) {
 		this.funcao = funcao;
 	}
-	public int getCodigo() {
+	public Long getCodigo() {
 		return codigo;
 	}
-	public void setCodigo(int codigo) {
+	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
 	public String getNick() {

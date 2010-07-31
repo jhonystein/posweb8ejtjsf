@@ -11,19 +11,18 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
 import modelo.Usuario;
-import dao.JPAUsuarioDAO;
+import util.JPAUtil;
+import dao.JPACrudDao;
 
 @SessionScoped
 @ManagedBean(name="usuarioUC")
 public class UsuarioUC {
 	
-	private JPAUsuarioDAO daoUsuario = null;
 	private Usuario usuario = new Usuario();
 	private Usuario usuarioLogado = null;
     private UIData select;
     
-    public UsuarioUC() throws Exception{
-    	daoUsuario = new JPAUsuarioDAO();
+    private UsuarioUC() {
     }
    
     public UIData getSelect() {
@@ -44,12 +43,24 @@ public class UsuarioUC {
     }
 
     public List<Usuario> getUsuarios() throws Exception{
-        return daoUsuario.listarTodos();		
+    	JPAUtil jpa = JPAUtil.getInstance();
+    	try {
+    		JPACrudDao<Usuario> daoUsuario = new JPACrudDao<Usuario>(jpa , Usuario.class);
+            return daoUsuario.listarTodos();		
+		} finally {
+			JPAUtil.finalizar();
+		}
     }
 
     public String salvar() throws Exception{
-    	daoUsuario.gravar(usuario);
-    	return "listarUsuario";
+    	JPAUtil jpa = JPAUtil.getInstance();
+    	try {
+    		JPACrudDao<Usuario> daoUsuario = new JPACrudDao<Usuario>(jpa , Usuario.class);
+        	daoUsuario.gravar(usuario);
+        	return "listarUsuario";
+		} finally {
+			JPAUtil.finalizar();
+		}
     }
 
     public String novo(){
@@ -65,23 +76,31 @@ public class UsuarioUC {
     	return usuarioLogado;
     }
     
-    public String logar(){
-    	usuarioLogado = daoUsuario.buscarUsuario(usuario);
-    	if(usuarioLogado == null){
-    		FacesMessage msg=new FacesMessage("Nick e/ou senha inv&aacute;lidos.");
-	        throw new ValidatorException(msg);
-    	}else
-    		if(usuarioLogado.getFuncao().equals("a"))
-    			return "indexAdmin";
-    		else
-    			if(usuarioLogado.getFuncao().equals("p"))
-        			return "";
+    public String logar() throws Exception{
+    	JPAUtil jpa = JPAUtil.getInstance();
+    	try {
+    		JPACrudDao<Usuario> daoUsuario = new JPACrudDao<Usuario>(jpa , Usuario.class);
+    		usuarioLogado = daoUsuario.ler(usuario.getCodigo());
+        	if(usuarioLogado == null){
+        		FacesMessage msg=new FacesMessage("Nick e/ou senha inv&aacute;lidos.");
+    	        throw new ValidatorException(msg);
+        	}else
+        		if(usuarioLogado.getFuncao().equals("a"))
+        			return "indexAdmin";
         		else
-        			return "";
+        			if(usuarioLogado.getFuncao().equals("p"))
+            			return "";
+            		else
+            			return "";
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JPAUtil.finalizar();
+		}
+		return "";
     }
     
-    public void validarEmail(FacesContext facesContex,UIComponent validate,
-            Object value) throws ValidatorException {
+    public void validarEmail(FacesContext facesContex, UIComponent validate, Object value) throws ValidatorException {
 	    String email = (String)value;
 	    if (email.indexOf("@") < 1) {
 	        FacesMessage msg=new FacesMessage("E-mail invalido.");

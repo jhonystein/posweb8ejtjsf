@@ -1,5 +1,7 @@
 package modelo;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,12 +12,14 @@ import javax.persistence.Table;
 @Entity
 @Table(name="sala")
 @NamedQuery(name="salaCampus", query="select count(s) from Sala as s where s.campus = ?1 and s.bloco = ?2 and s.numeroSala = ?3 and s.codigo <> 4?")
-public class Sala {
+public class Sala implements Serializable, IModelo {
+
+	private static final long serialVersionUID = 8984474499580892379L;
 
 	@Id
 	@GeneratedValue
 	@Column(name="cd_sala")
-	private int codigo;
+	private Long codigo;
 	
 	@Column(name="nr_campus")
 	private int campus;
@@ -26,11 +30,11 @@ public class Sala {
 	@Column(name="nr_sala")
 	private int numeroSala;
 
-	public int getCodigo() {
+	public Long getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(int codigo) {
+	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
 

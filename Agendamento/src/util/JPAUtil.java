@@ -20,7 +20,7 @@ public class JPAUtil {
 	
 	public static JPAUtil getInstance() throws Exception {
 		if (jpa == null)
-			throw new Exception("Faltou iniciar a classe. Execute JPAUtil.init() passando o nome da unidade de persistencia.");
+			init(Config.BANCODADOS);
 		return jpa;
 	}
 
@@ -44,6 +44,13 @@ public class JPAUtil {
 		em.getTransaction().commit();
 	}
 
+	public void excluir(Object obj) {
+		EntityManager em = getEntityManager();
+		em.getTransaction().begin();
+		em.remove(obj);
+		em.getTransaction().commit();
+	}
+	
 	public void alterar(Object obj) {
 		EntityManager em = getEntityManager();
 		em.getTransaction().begin();
@@ -70,13 +77,11 @@ public class JPAUtil {
 		return l;
 	}
 	
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public List listarNamedQuery(String namedQuery) {
-		
 		EntityManager em = getEntityManager();
 		Query q = em.createNamedQuery(namedQuery);
 		List l = q.getResultList();
-		
 		
 		return l;
 	}

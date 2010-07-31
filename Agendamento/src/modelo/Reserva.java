@@ -1,5 +1,6 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -10,12 +11,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="reserva")
-public class Reserva {
+public class Reserva implements Serializable, IModelo {
+
+	private static final long serialVersionUID = 376780444900013139L;
 
 	@Id
 	@GeneratedValue
 	@Column(name="cd_reserva")
-	private int codigo;
+	private Long codigo;
 	
 	@Column(name="dt_reserva")
 	private Date data;
@@ -26,11 +29,11 @@ public class Reserva {
 	@Column(name="nr_campus")
 	private int campus;
 
-	public int getCodigo() {
+	public Long getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(int codigo) {
+	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
 

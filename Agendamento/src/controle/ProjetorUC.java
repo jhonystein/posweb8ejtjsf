@@ -7,18 +7,17 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIData;
 
 import modelo.Projetor;
-import dao.JPAProjetorDAO;
+import util.JPAUtil;
+import dao.JPACrudDao;
 
 @SessionScoped
 @ManagedBean(name="projetorUC")
 public class ProjetorUC {
 	
-	private JPAProjetorDAO daoProjetor = null;
 	private Projetor projetor = new Projetor();
     private UIData select;
     
     public ProjetorUC() throws Exception{
-    	daoProjetor = new JPAProjetorDAO();
     }
    
     public UIData getSelect() {
@@ -39,12 +38,24 @@ public class ProjetorUC {
     }
 
     public List<Projetor> getProjetores() throws Exception{
-        return daoProjetor.listarTodos();		
+    	JPAUtil jpa = JPAUtil.getInstance();
+    	try {
+    		JPACrudDao<Projetor> daoProjetor = new JPACrudDao<Projetor>(jpa , Projetor.class);
+            return daoProjetor.listarTodos();		
+		} finally {
+			JPAUtil.finalizar();
+		}
     }
 
     public String salvar() throws Exception{
-		daoProjetor.gravar(projetor);
-    	return "listarProjetor";
+    	JPAUtil jpa = JPAUtil.getInstance();
+    	try {
+    		JPACrudDao<Projetor> daoProjetor = new JPACrudDao<Projetor>(jpa , Projetor.class);
+    		daoProjetor.gravar(projetor);
+        	return "listarProjetor";
+		} finally {
+			JPAUtil.finalizar();
+		}
     }
 
     public String novo(){

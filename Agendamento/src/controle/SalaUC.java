@@ -7,18 +7,17 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIData;
 
 import modelo.Sala;
+import util.JPAUtil;
 import dao.JPASalaDAO;
 
 @SessionScoped
 @ManagedBean(name="salaUC")
 public class SalaUC {
 	
-	private JPASalaDAO daoSala = null;
 	private Sala sala = new Sala();
     private UIData select;
     
     public SalaUC() throws Exception{
-    	daoSala = new JPASalaDAO();
     }
    
     public UIData getSelect() {
@@ -39,15 +38,27 @@ public class SalaUC {
     }
 
     public List<Sala> getSalas() throws Exception{
-        return daoSala.listarTodos();		
+    	JPAUtil jpa = JPAUtil.getInstance();
+    	try {
+    		JPASalaDAO daoSala = new JPASalaDAO(jpa);
+            return daoSala.listarTodos();		
+		} finally {
+			JPAUtil.finalizar();
+		}
     }
 
     public String salvar() throws Exception{
-    	if(daoSala.verificarSalaUnicaBloco(sala)){
-	    	daoSala.gravar(sala);
-	    	return "listarSala";
-    	}else
-    		return null;
+    	JPAUtil jpa = JPAUtil.getInstance();
+    	try {
+    		JPASalaDAO daoSala = new JPASalaDAO(jpa);
+        	if(daoSala.verificarSalaUnicaBloco(sala)){
+    	    	daoSala.gravar(sala);
+    	    	return "listarSala";
+        	}else
+        		return null;
+		} finally {
+			JPAUtil.finalizar();
+		}
     }
 
     public String novo(){
