@@ -26,6 +26,8 @@
 					<h:outputText id="sala" value="#{salaUC.sala.numeroSala}" required="true"/>
 					<h:message for="sala"/>
 				</h:panelGrid>
+				<h:commandButton value="Salvar" action="#{salaUC.salvar}"/>
+                <h:commandButton value="Cancelar" action="#{salaUC.cancelar}" immediate="true"/>				
 			</h:form>
       </ui:define>
     </ui:composition>

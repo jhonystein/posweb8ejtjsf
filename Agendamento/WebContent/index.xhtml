@@ -3,11 +3,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html">
     <h:head>
-        <title>Agendamento</title>
+        <title>Agendamentos</title>
     </h:head>
     <h:body>
-    	
-        <h:link outcome="listarUsuarios" value="Usu&aacute;rios"/>
-        
-    </h:body>
+		<h:form>
+			<h:panelGrid columns="3">
+				<h:outputLabel value="Nick"/>
+				<h:outputText id="nick" value="#{usuarioUC.usuario.nick}" required="true"/>
+				<h:message for="nick"/>
+	
+			    <h:outputLabel value="Senha"/>
+				<h:outputText id="senha" value="#{usuarioUC.usuario.senha}" required="true"/>
+				<h:message for="senha"/>
+			</h:panelGrid>
+			<h:commandButton value="Logar" action="#{usuarioUC.logar}"/>
+		</h:form>
+       </h:body>
 </html>

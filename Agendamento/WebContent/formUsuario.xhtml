@@ -28,6 +28,8 @@
 					<f:selectItem itemLabel="Instalador" itemValue="i"/>
 				</h:selectOneRadio>
 			</h:panelGrid>
+			<h:commandButton value="Salvar" action="#{usuarioUC.salvar}"/>
+            <h:commandButton value="Cancelar" action="#{usuarioUC.cancelar}" immediate="true"/>
 		</h:form>
         </ui:define>
     </ui:composition>
