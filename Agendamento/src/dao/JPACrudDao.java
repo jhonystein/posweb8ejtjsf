@@ -7,7 +7,7 @@ import util.JPAUtil;
 
 public class JPACrudDao<T extends IModelo> implements IDao<T> {
 
-	private JPAUtil jpa;
+	protected JPAUtil jpa;
 	private Class<T> domainClass;
 
 	public JPACrudDao(JPAUtil jpa, Class<T> domainClass) {

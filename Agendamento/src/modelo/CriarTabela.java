@@ -15,7 +15,7 @@ public class CriarTabela {
 
 			// Trecho exemplificando uso de JDBC
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "mysql");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "root");
 			Statement st = con.createStatement();
 			st.execute("drop database if exists "+Config.BANCODADOS);
 			st.execute("create database "+Config.BANCODADOS);

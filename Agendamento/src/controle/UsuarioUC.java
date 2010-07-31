@@ -13,6 +13,7 @@ import javax.faces.validator.ValidatorException;
 import modelo.Usuario;
 import util.JPAUtil;
 import dao.JPACrudDao;
+import dao.JPAUsuarioDao;
 
 @SessionScoped
 @ManagedBean(name="usuarioUC")
@@ -79,8 +80,8 @@ public class UsuarioUC {
     public String logar() throws Exception{
     	JPAUtil jpa = JPAUtil.getInstance();
     	try {
-    		JPACrudDao<Usuario> daoUsuario = new JPACrudDao<Usuario>(jpa , Usuario.class);
-    		usuarioLogado = daoUsuario.ler(usuario.getCodigo());
+    		JPAUsuarioDao daoUsuario = new JPAUsuarioDao(jpa);
+    		usuarioLogado = daoUsuario.buscarUsuario(usuario);
         	if(usuarioLogado == null){
         		FacesMessage msg=new FacesMessage("Nick e/ou senha inv&aacute;lidos.");
     	        throw new ValidatorException(msg);
@@ -92,6 +93,7 @@ public class UsuarioUC {
             			return "";
             		else
             			return "";
+        
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

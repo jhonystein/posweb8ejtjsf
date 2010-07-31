@@ -9,14 +9,15 @@
 		<h:form>
 			<h:panelGrid columns="3">
 				<h:outputLabel value="Nick"/>
-				<h:outputText id="nick" value="#{usuarioUC.usuario.nick}" required="true"/>
+				<h:inputText id="nick" value="#{usuarioUC.usuario.nick}" required="true"/>
 				<h:message for="nick"/>
 	
 			    <h:outputLabel value="Senha"/>
-				<h:outputText id="senha" value="#{usuarioUC.usuario.senha}" required="true"/>
+				<h:inputSecret id="senha" value="#{usuarioUC.usuario.senha}" required="true"/>
 				<h:message for="senha"/>
 			</h:panelGrid>
-			<h:commandButton value="Logar" action="#{usuarioUC.logar}"/>
+			<h:commandButton value="Logar" action="#{usuarioUC.logar}" immediate="true"/>
+			<h:commandButton value="Inicializar banco de dados" action="#{manipulacaoBancoUC.criarBancoDados}" immediate="true"/>
 		</h:form>
        </h:body>
 </html>
