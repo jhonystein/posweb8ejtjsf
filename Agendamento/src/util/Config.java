@@ -1,6 +1,6 @@
 package util;
 
-public class VariavelGeral {
+public class Config {
 	
 	public static final String BANCODADOS = "agendamento";
 
