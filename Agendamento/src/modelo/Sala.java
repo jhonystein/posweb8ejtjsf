@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="sala")
-@NamedQuery(name="salaCampus", query="select count(s) from Sala as s where s.campus = ?1 and s.bloco = ?2 and s.numeroSala = ?3")
+@NamedQuery(name="salaCampus", query="select count(s) from Sala as s where s.campus = ?1 and s.bloco = ?2 and s.numeroSala = ?3 and s.codigo <> 4?")
 public class Sala {
 
 	@Id

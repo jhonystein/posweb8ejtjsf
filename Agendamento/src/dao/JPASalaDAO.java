@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import util.JPAUtil;
+
 import modelo.Sala;
 
 public class JPASalaDAO implements DAO<Sala> {
@@ -33,10 +35,11 @@ public class JPASalaDAO implements DAO<Sala> {
 	}
 	
 	public boolean verificarSalaUnicaBloco(Sala sala) throws Exception{
-		Query q = JPAUtil.getInstance().getEntityManager().createNamedQuery("salaCampus");
-		q.setParameter(1, "pro%");
-		q.setParameter(2, "pro%");
-		q.setParameter(3, "pro%");
+		Query q = util.getEntityManager().createNamedQuery("salaCampus");
+		q.setParameter(1, sala.getCampus());
+		q.setParameter(2, sala.getBloco());
+		q.setParameter(3, sala.getNumeroSala());
+		q.setParameter(4, sala.getCodigo());
 		Long contador = (Long) q.getSingleResult();
 		if(contador > 0)
 			return false;

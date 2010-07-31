@@ -19,9 +19,10 @@ public class UsuarioUC {
 	
 	private JPAUsuarioDAO daoUsuario = null;
 	private Usuario usuario = new Usuario();
+	private Usuario usuarioLogado = null;
     private UIData select;
     
-    private UsuarioUC() throws Exception{
+    public UsuarioUC() throws Exception{
     	daoUsuario = new JPAUsuarioDAO();
     }
    
@@ -58,6 +59,25 @@ public class UsuarioUC {
 
     public String cancelar(){
          return "listarUsuario";
+    }
+    
+    public Usuario getUsuarioLogado(){
+    	return usuarioLogado;
+    }
+    
+    public String logar(){
+    	usuarioLogado = daoUsuario.buscarUsuario(usuario);
+    	if(usuarioLogado == null){
+    		FacesMessage msg=new FacesMessage("Nick e/ou senha inv&aacute;lidos.");
+	        throw new ValidatorException(msg);
+    	}else
+    		if(usuarioLogado.getFuncao().equals("a"))
+    			return "indexAdmin";
+    		else
+    			if(usuarioLogado.getFuncao().equals("p"))
+        			return "";
+        		else
+        			return "";
     }
     
     public void validarEmail(FacesContext facesContex,UIComponent validate,

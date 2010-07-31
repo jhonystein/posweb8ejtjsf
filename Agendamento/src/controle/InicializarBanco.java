@@ -3,9 +3,9 @@ package controle;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import util.JPAUtil;
 import util.VariavelGeral;
 
-import dao.JPAUtil;
 
 @SessionScoped
 @ManagedBean(name="InicializarBanco")

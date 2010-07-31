@@ -2,6 +2,8 @@ package dao;
 
 import java.util.List;
 
+import util.JPAUtil;
+
 import modelo.Reserva;
 
 public class JPAReservaDAO implements DAO<Reserva> {

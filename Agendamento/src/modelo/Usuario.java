@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
@@ -13,6 +14,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="usuario")
+@NamedQuery(name="usuarioLogado", query="select u from Usuario as u where u.nick = ?1 and u.senha = ?2")
 public class Usuario implements Serializable {
 
     @Id
