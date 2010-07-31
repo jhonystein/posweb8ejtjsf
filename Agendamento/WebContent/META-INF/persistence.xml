@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
 	version="1.0">
 
-	<persistence-unit name="aulajpa">
+	<persistence-unit name="agendamento">
 		<class>modelo.Usuario</class>
 		<class>modelo.Sala</class>
 		<class>modelo.Reserva</class>
@@ -11,7 +11,7 @@
 		<properties>
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
 			<property name="hibernate.connection.username" value="root" />
-			<property name="hibernate.connection.password" value="" />
+			<property name="hibernate.connection.password" value="mysql" />
 			<property name="hibernate.connection.url" value="jdbc:mysql://localhost/agendamento" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 			<property name="hibernate.show_sql" value="true"/>
