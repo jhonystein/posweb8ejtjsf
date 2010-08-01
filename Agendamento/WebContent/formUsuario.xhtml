@@ -10,15 +10,15 @@
 		<h:form>
 			<h:panelGrid columns="3">
 				<h:outputLabel value="Nick"/>
-				<h:outputText id="nick" value="#{usuarioUC.usuario.nick}" require="true"/>
+				<h:inputText id="nick" value="#{usuarioUC.usuario.nick}" require="true"/>
 				<h:message for="nick"/>
 			
 			    <h:outputLabel value="Senha"/>
-				<h:outputText id="senha" value="#{usuarioUC.usuario.senha}"/>
+				<h:inputText id="senha" value="#{usuarioUC.usuario.senha}"/>
 				<h:message for="senha"/>
 	
 			    <h:outputLabel value="E-Mail"/>
-				<h:outputText id="email" value="#{usuarioUC.usuario.email}" validator="#{usuarioUC.validarEmail}"/>
+				<h:inputText id="email" value="#{usuarioUC.usuario.email}" validator="#{usuarioUC.validarEmail}"/>
 				<h:message for="email"/>
 				
 				<h:outputLabel value="Fun&ccedil;&atilde;o"/>

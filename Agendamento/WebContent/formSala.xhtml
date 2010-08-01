@@ -19,11 +19,11 @@
 					<h:message for="campus"/>
 		
 				    <h:outputLabel value="Bloco"/>
-					<h:outputText id="bloco" value="#{salaUC.sala.bloco}" required="true"/>
+					<h:inputText id="bloco" value="#{salaUC.sala.bloco}" required="true"/>
 					<h:message for="bloco"/>
 		
 				    <h:outputLabel value="Sala"/>
-					<h:outputText id="sala" value="#{salaUC.sala.numeroSala}" required="true"/>
+					<h:inputText id="sala" value="#{salaUC.sala.numeroSala}" required="true"/>
 					<h:message for="sala"/>
 				</h:panelGrid>
 				<h:commandButton value="Salvar" action="#{salaUC.salvar}"/>
