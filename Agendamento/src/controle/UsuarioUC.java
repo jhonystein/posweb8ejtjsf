@@ -77,7 +77,7 @@ public class UsuarioUC {
     	return usuarioLogado;
     }
     
-    public String logar() throws Exception{
+    public String logar() throws ValidatorException, Exception{
     	JPAUtil jpa = JPAUtil.getInstance();
     	try {
     		JPAUsuarioDao daoUsuario = new JPAUsuarioDao(jpa);

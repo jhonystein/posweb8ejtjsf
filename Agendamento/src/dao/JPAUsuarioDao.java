@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import javax.persistence.Query;
 
 import modelo.Usuario;
@@ -15,7 +17,8 @@ public class JPAUsuarioDao extends JPACrudDao<Usuario> {
 		Query q = jpa.getEntityManager().createNamedQuery("usuarioLogado");
 		q.setParameter(1, usuario.getNick());
 		q.setParameter(2, usuario.getSenha());
-		return (Usuario) q.getSingleResult();		
+		List<Usuario> lstObjetos = q.getResultList();
+		return  (lstObjetos.size() > 0 ? (Usuario)lstObjetos.get(0) : null);		
 	}
 
 }
