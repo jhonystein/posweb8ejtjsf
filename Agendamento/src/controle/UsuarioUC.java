@@ -109,5 +109,20 @@ public class UsuarioUC {
 	        throw new ValidatorException(msg);
 	    }
 	}
+    
+    public static void inicializarUsuario() throws Exception{
+    	JPAUtil jpa = JPAUtil.getInstance();
+    	try {
+    		JPACrudDao<Usuario> daoUsuario = new JPACrudDao<Usuario>(jpa , Usuario.class);
+        	Usuario usuario = new Usuario();
+			usuario.setFuncao("a");
+			usuario.setNick("admin");
+			usuario.setSenha("admin");
+			daoUsuario.gravar(usuario);
+    	} finally {
+			JPAUtil.finalizar();
+		}//criar primeiro usuario no banco
+		
+    }
    
 }

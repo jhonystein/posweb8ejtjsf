@@ -16,7 +16,7 @@
 				<h:inputSecret id="senha" value="#{usuarioUC.usuario.senha}" required="true"/>
 				<h:message for="senha"/>
 			</h:panelGrid>
-			<h:commandButton value="Logar" action="#{usuarioUC.logar}" immediate="true"/>
+			<h:commandButton value="Logar" action="#{usuarioUC.logar}"/>
 			<h:commandButton value="Inicializar banco de dados" action="#{manipulacaoBancoUC.criarBancoDados}" immediate="true"/>
 		</h:form>
        </h:body>

@@ -44,12 +44,7 @@ public class ManipulacaoBancoUC {
 		
 		new SchemaExport(an).create(true, true);
 
-		//criar primeiro usuario no banco
-		UsuarioUC controlador = new UsuarioUC();
-		controlador.getUsuario().setFuncao("a");
-		controlador.getUsuario().setNick("admin");
-		controlador.getUsuario().setSenha("admin");
-		controlador.salvar();
+		UsuarioUC.inicializarUsuario();
 		
 	}
 
