@@ -6,7 +6,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIData;
 
-import modelo.Projetor;
 import modelo.Sala;
 import util.JPAUtil;
 import dao.JPACrudDao;

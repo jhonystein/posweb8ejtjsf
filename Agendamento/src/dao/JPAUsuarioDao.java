@@ -13,6 +13,7 @@ public class JPAUsuarioDao extends JPACrudDao<Usuario> {
 		super(jpa, Usuario.class);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public Usuario buscarUsuario(Usuario usuario) {
 		Query q = jpa.getEntityManager().createNamedQuery("usuarioLogado");
 		q.setParameter(1, usuario.getNick());
