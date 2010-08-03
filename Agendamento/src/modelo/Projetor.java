@@ -23,7 +23,7 @@ public class Projetor implements Serializable, IModelo {
 	private String numeroPatrimonio;
 	
 	@Column(name="nr_campus")
-	private int campus;
+	private int campus=1;
 
 	public Long getCodigo() {
 		return codigo;

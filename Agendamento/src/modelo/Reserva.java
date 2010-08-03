@@ -24,10 +24,10 @@ public class Reserva implements Serializable, IModelo {
 	private Date data;
 	
 	@Column(name="nr_horario")
-	private int horario;
+	private int horario=1;
 	
 	@Column(name="nr_campus")
-	private int campus;
+	private int campus=1;
 
 	public Long getCodigo() {
 		return codigo;

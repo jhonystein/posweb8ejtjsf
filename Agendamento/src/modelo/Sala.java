@@ -22,7 +22,7 @@ public class Sala implements Serializable, IModelo {
 	private Long codigo;
 	
 	@Column(name="nr_campus")
-	private int campus;
+	private int campus=1;
 	
 	@Column(name="nr_bloco")
 	private String bloco;

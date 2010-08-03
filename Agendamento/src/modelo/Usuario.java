@@ -34,7 +34,7 @@ public class Usuario implements IModelo, Serializable {
     private String email;
     
     @Column(name="ds_funcao")
-    private String funcao;
+    private String funcao="a";
 
 	public String getFuncao() {
 		return funcao;
