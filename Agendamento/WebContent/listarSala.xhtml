@@ -28,7 +28,9 @@
                         <h:outputText value="#{sala.campus}"/>
                     </h:column>
                     <h:column>
-                        <h:commandLink action="#{salaUC.selecione}" value="Editar"/>
+                        <h:commandLink action="#{salaUC.selecione}">
+                        	<h:graphicImage url="/icones/editar.png"/>
+                        </h:commandLink>
                     </h:column>
                 </h:dataTable>
                 <h:commandLink action="#{salaUC.novo}" value="Novo"/>

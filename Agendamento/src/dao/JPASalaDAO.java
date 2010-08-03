@@ -7,14 +7,12 @@ import util.JPAUtil;
 
 public class JPASalaDAO extends JPACrudDao<Sala> {
 	
-	private JPAUtil util;
-
 	public JPASalaDAO(JPAUtil jpa){
 		super(jpa, Sala.class);
 	}
 	
 	public boolean verificarSalaUnicaBloco(Sala sala) throws Exception{
-		Query q = util.getEntityManager().createNamedQuery("salaCampus");
+		Query q = jpa.getEntityManager().createNamedQuery("salaCampus");
 		q.setParameter(1, sala.getCampus());
 		q.setParameter(2, sala.getBloco());
 		q.setParameter(3, sala.getNumeroSala());

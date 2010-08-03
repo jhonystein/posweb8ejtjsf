@@ -19,7 +19,7 @@ public class Sala implements Serializable, IModelo {
 	@Id
 	@GeneratedValue
 	@Column(name="cd_sala")
-	private Long codigo;
+	private Long codigo = 0L;
 	
 	@Column(name="nr_campus")
 	private int campus=1;

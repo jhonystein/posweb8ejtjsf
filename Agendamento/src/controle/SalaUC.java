@@ -8,7 +8,6 @@ import javax.faces.component.UIData;
 
 import modelo.Sala;
 import util.JPAUtil;
-import dao.JPACrudDao;
 import dao.JPASalaDAO;
 
 @SessionScoped
@@ -51,12 +50,16 @@ public class SalaUC {
     public String salvar() throws Exception{
     	JPAUtil jpa = JPAUtil.getInstance();
     	try {
-    		JPACrudDao<Sala> daoSala = new JPACrudDao<Sala>(jpa , Sala.class);
-    		daoSala.gravar(sala);
-        	return "listarSala";
+    		JPASalaDAO daoSala = new JPASalaDAO(jpa);
+        	if(daoSala.verificarSalaUnicaBloco(sala)){
+    	    	daoSala.gravar(sala);
+    	    	return "listarSala";
+        	}else{
+        		return null;
+        	}
 		} finally {
 			JPAUtil.finalizar();
-		}
+		}    	
     }
 
     public String novo(){
