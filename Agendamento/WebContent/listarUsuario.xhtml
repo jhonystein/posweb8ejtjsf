@@ -13,7 +13,9 @@
                         <f:facet name="header">
                             <h:outputText value="Nick"/>
                         </f:facet>
-                        <h:outputText value="#{usuario.nick}"/>
+                        <h:commandLink action="#{usuarioUC.selecione}">
+                        	<h:outputText value="#{usuario.nick}"/>
+                        </h:commandLink>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
@@ -26,11 +28,6 @@
                             <h:outputText value="Fun&ccedil;&atilde;o"/>
                         </f:facet>
                         <h:outputText value="#{usuario.funcao}"/>
-                    </h:column>
-                    <h:column>
-                        <h:commandLink action="#{usuarioUC.selecione}">
-                        	<h:graphicImage url="/icones/editar.png"/>
-                        </h:commandLink>
                     </h:column>
                 </h:dataTable>
                 <h:commandLink action="#{usuarioUC.novo}" value="Novo"/>

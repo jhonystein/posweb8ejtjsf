@@ -13,19 +13,16 @@
                         <f:facet name="header">
                             <h:outputText value="N&uacute;mero do Patrim&ocirc;nio"/>
                         </f:facet>
-                        <h:outputText value="#{projetor.numeroPatrimonio}"/>
+                        <h:commandLink action="#{projetorUC.selecione}">
+                        	<h:outputText value="#{projetor.numeroPatrimonio}"/>
+                        </h:commandLink>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="Campus"/>
                         </f:facet>
                         <h:outputText value="#{projetor.campus}"/>
-                    </h:column>
-                    <h:column>
-                        <h:commandLink action="#{projetorUC.selecione}">
-                        	<h:graphicImage url="/icones/editar.png"/>
-                        </h:commandLink>
-                    </h:column>
+                    </h:column>                    
                 </h:dataTable>
                 <h:commandLink action="#{projetorUC.novo}" value="Novo"/>
                 <h:link outcome="indexAdmin" value="Home"/>
