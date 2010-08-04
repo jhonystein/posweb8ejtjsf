@@ -1,5 +1,8 @@
 package controle;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIData;
@@ -28,6 +31,13 @@ public class ReservaUC {
 
     public Reserva getReserva(){
         return reserva;
+    }
+    
+    public List<Integer> horarios(){
+    	ArrayList<Integer> horarios = new ArrayList<Integer>();
+    	for(int i= 1; i <= 15; i++)
+    		horarios.add(i);
+    	return horarios;
     }
 
     public String salvar() throws Exception{

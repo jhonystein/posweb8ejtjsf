@@ -7,7 +7,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="reserva")
@@ -18,16 +22,21 @@ public class Reserva implements Serializable, IModelo {
 	@Id
 	@GeneratedValue
 	@Column(name="cd_reserva")
-	private Long codigo;
+	private Long codigo = 0L;
 	
 	@Column(name="dt_reserva")
-	private Date data;
+	@Temporal(TemporalType.DATE)
+	private Date data = new Date();
 	
 	@Column(name="nr_horario")
 	private int horario=1;
 	
 	@Column(name="nr_campus")
 	private int campus=1;
+	
+	@ManyToOne
+	@JoinColumn(name="cd_projetor")
+	private Projetor projetor;
 
 	public Long getCodigo() {
 		return codigo;
@@ -59,6 +68,14 @@ public class Reserva implements Serializable, IModelo {
 
 	public void setCampus(int campus) {
 		this.campus = campus;
+	}
+
+	public void setProjetor(Projetor projetor) {
+		this.projetor = projetor;
+	}
+
+	public Projetor getProjetor() {
+		return projetor;
 	}
 
 }

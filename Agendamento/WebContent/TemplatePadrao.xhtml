@@ -20,7 +20,7 @@
 			<h:link outcome="listarProjetor" value="Projetores" />
 		</c:if>
 		<c:if test="${UsuarioUC.usuarioLogado.funcao == 'p'}">
-			<h:link outcome="Reservar Projetor" value="reservarProjetor" /> <br />
+			<h:link outcome="formReserva" value="Reservar Projetor" /> <br />
 		</c:if>
 		<c:if test="${UsuarioUC.usuarioLogado.funcao == 'i'}">
 			<h:link outcome="Instalar Projetor" value="instalarProjetor" /> <br />
