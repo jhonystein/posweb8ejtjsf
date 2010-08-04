@@ -3,7 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	>
 <h:head>
 	<title>#{titulo}</title>
 </h:head>
@@ -11,13 +13,18 @@
 	<div><ui:insert name="cabecalho" /> <h:outputText
 		value="Cabecalho" /></div>
 	<div id="menu">
-		<h:link outcome="listarUsuario" value="Usu&aacute;rios" /> <br />
-		<h:link outcome="listarSala" value="Salas" /> <br />
-		<h:link outcome="listarProjetor" value="Projetores" />
-
-		<h:link outcome="Reservar Projetor" value="reservarProjetor" /> <br />
-		<h:link outcome="Instalar Projetor" value="instalarProjetor" /> <br />
-		 
+	
+		<c:if test="${UsuarioUC.usuarioLogado.funcao == 'a'}">
+			<h:link outcome="listarUsuario" value="Usu&aacute;rios" /> <br />
+			<h:link outcome="listarSala" value="Salas" /> <br />
+			<h:link outcome="listarProjetor" value="Projetores" />
+		</c:if>
+		<c:if test="${UsuarioUC.usuarioLogado.funcao == 'p'}">
+			<h:link outcome="Reservar Projetor" value="reservarProjetor" /> <br />
+		</c:if>
+		<c:if test="${UsuarioUC.usuarioLogado.funcao == 'i'}">
+			<h:link outcome="Instalar Projetor" value="instalarProjetor" /> <br />
+		</c:if> 
 	</div>
 	<div><ui:insert name="corpo" /></div>
 	<div><ui:insert name="rodape" /> <h:outputText value="Rodape" />
