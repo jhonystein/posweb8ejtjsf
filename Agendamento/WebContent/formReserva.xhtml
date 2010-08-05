@@ -9,17 +9,19 @@
         <ui:define name="corpo">
 			<h:form>
 				<h:panelGrid columns="3">
-				    <h:outputLabel value="Data"/>
+				    <h:outputLabel value="Data:"/>
 					<h:inputText id="data" value="#{reservaUC.reserva.data}" required="true">
 						<f:convertDateTime pattern="dd/MM/yyyy"/>
 					</h:inputText>
 					<h:message for="data"/>
 		
-					<h:selectOneMenu value="#{reservaUC.reserva.horario}">
+					<h:outputLabel value="Hor&aacute;rio:"/>
+					<h:selectOneMenu id="horario" value="#{reservaUC.reserva.horario}">
 						 <f:selectItems value="#{reservaUC.horarios}" var="horario" itemLabel="#{horario}"/>
 					</h:selectOneMenu>
+					<h:message for="horario"/>
 		
-				    <h:outputLabel value="Campus"/>
+				    <h:outputLabel value="Campus:"/>
 					<h:selectOneRadio id="campus" value="#{reservaUC.reserva.campus}" required="true">
 						<f:selectItem itemLabel="1" itemValue="1"/>
 						<f:selectItem itemLabel="2" itemValue="2"/>

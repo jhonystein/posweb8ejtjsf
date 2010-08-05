@@ -90,7 +90,7 @@ public class UsuarioUC {
         			return "indexAdmin";
         		else
         			if(usuarioLogado.getFuncao().equals("p"))
-            			return "";
+            			return "formReserva";
             		else
             			return "";
         

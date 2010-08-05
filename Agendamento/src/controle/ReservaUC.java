@@ -9,16 +9,19 @@ import javax.faces.component.UIData;
 
 import modelo.Reserva;
 import util.JPAUtil;
-import dao.JPACrudDao;
+import dao.JPAReservaDao;
 
 @SessionScoped
-@ManagedBean(name="projetorUC")
+@ManagedBean(name="reservaUC")
 public class ReservaUC {
 	
 	private Reserva reserva = new Reserva();
     private UIData select;
-    
+    private ArrayList<Integer> horarios = new ArrayList<Integer>();
+	
     public ReservaUC() {
+    	for(int i= 1; i <= 15; i++)
+    		horarios.add(i);
     }
    
     public UIData getSelect() {
@@ -33,19 +36,19 @@ public class ReservaUC {
         return reserva;
     }
     
-    public List<Integer> horarios(){
-    	ArrayList<Integer> horarios = new ArrayList<Integer>();
-    	for(int i= 1; i <= 15; i++)
-    		horarios.add(i);
+    public List<Integer> getHorarios(){
     	return horarios;
     }
-
+    
     public String salvar() throws Exception{
     	JPAUtil jpa = JPAUtil.getInstance();
     	try {
-    		JPACrudDao<Reserva> daoReserva = new JPACrudDao<Reserva>(jpa , Reserva.class);
-    		daoReserva.gravar(reserva);
-        	return "sucessoReserva";
+    		JPAReservaDao daoReserva = new JPAReservaDao(jpa);
+    		if(daoReserva.temProjetorDisponivel(reserva)){
+	    		daoReserva.gravar(reserva);
+	        	return "sucessoReserva";
+    		}else
+    			return null;
 		} finally {
 			JPAUtil.finalizar();
 		}
