@@ -1,7 +1,23 @@
 @CHARSET "ISO-8859-1";
 body {
-	background-color: #F8F8F8;
+	background-color: #F0FFF0;
 	color: #000;
+}
+
+#corpo{
+	width:990px;
+	margin: 0 auto;
+	background-color:#F8F8F8;
+	border-left:1px solid #DFDFDF;
+	border-right:1px solid #DFDFDF;
+}
+
+#login{
+	width:250px;
+	margin: 0 auto;
+	background-color:#F8F8F8;
+	border-left:1px solid #DFDFDF;
+	border-right:1px solid #DFDFDF;
 }
 
 .tabela{

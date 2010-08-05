@@ -21,7 +21,7 @@ import util.Config;
 @ManagedBean(name="manipulacaoBancoUC")
 public class ManipulacaoBancoUC {
 	
-	public void criarBancoDados() throws Exception{
+	public String criarBancoDados() throws Exception{
 		
 		// Trecho exemplificando uso de JDBC
 		Class.forName("com.mysql.jdbc.Driver");
@@ -45,7 +45,7 @@ public class ManipulacaoBancoUC {
 		new SchemaExport(an).create(true, true);
 
 		UsuarioUC.inicializarUsuario();
-		
+		return "bancoInicializado";
 	}
 
 }

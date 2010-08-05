@@ -4,20 +4,26 @@
       xmlns:h="http://java.sun.com/jsf/html">
     <h:head>
         <title>Agendamentos</title>
+        <link href="#{facesContext.externalContext.requestContextPath}/css/estilo.css" rel="stylesheet" type="text/css" />
     </h:head>
     <h:body>
-		<h:form>
-			<h:panelGrid columns="3">
-				<h:outputLabel value="Nick"/>
-				<h:inputText id="nick" value="#{usuarioUC.usuario.nick}" required="true"/>
-				<h:message for="nick"/>
-	
-			    <h:outputLabel value="Senha"/>
-				<h:inputSecret id="senha" value="#{usuarioUC.usuario.senha}" required="true"/>
-				<h:message for="senha"/>
-			</h:panelGrid>
-			<h:commandButton value="Logar" action="#{usuarioUC.logar}"/>
-			<h:commandButton value="Inicializar banco de dados" action="#{manipulacaoBancoUC.criarBancoDados}" immediate="true"/>
-		</h:form>
-       </h:body>
+    	<div id="login">
+			<fieldset>
+    			<legend>Login:</legend>
+    			<h:form>
+					<h:panelGrid columns="3">
+						<h:outputLabel value="Nick"/>
+						<h:inputText id="nick" value="#{usuarioUC.usuario.nick}" required="true"/>
+						<h:message for="nick"/>
+			
+					    <h:outputLabel value="Senha"/>
+						<h:inputSecret id="senha" value="#{usuarioUC.usuario.senha}" required="true"/>
+						<h:message for="senha"/>
+					</h:panelGrid>
+					<h:commandButton value="Logar" action="#{usuarioUC.logar}"/>
+					<h:commandLink action="#{manipulacaoBancoUC.criarBancoDados}" value="Inicializar banco de dados" immediate="true"/>
+				</h:form>	
+			</fieldset>		
+	    </div>
+	 </h:body>
 </html>
