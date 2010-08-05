@@ -26,6 +26,9 @@
 		<c:if test="${usuarioUC.usuarioLogado.funcao == 'i'}">
 			<h:link outcome="Instalar Projetor" value="instalarProjetor" />
 		</c:if> 
+		<h:form>
+			<h:commandLink action="${usuarioUC.logout}" value="Sair" /> <br />
+		</h:form>
 	</div>
 	<div><ui:insert name="corpo" /></div>
 	<div><ui:insert name="rodape" /> <h:outputText value="Rodape" />

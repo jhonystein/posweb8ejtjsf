@@ -96,6 +96,12 @@ public class UsuarioUC {
 		return "";
     }
     
+    public String logout() {
+    	usuarioLogado = null;
+    	usuario = new Usuario();
+    	return "index";
+    }
+    
     public void validarEmail(FacesContext facesContex, UIComponent validate, Object value) throws ValidatorException {
 	    String email = (String)value;
 	    if (email.indexOf("@") < 1) {
