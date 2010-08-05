@@ -10,21 +10,21 @@
 	<title>#{titulo}</title>
 	<link href="#{facesContext.externalContext.requestContextPath}/css/estilo.css" rel="stylesheet" type="text/css" />
 </h:head>
-<h:body>
+<h:body styleClass="corpo">
 	<div><ui:insert name="cabecalho" /> <h:outputText
 		value="Cabecalho" /></div>
 	<div id="menu">
 	
-		<c:if test="${UsuarioUC.usuarioLogado.funcao == 'a'}">
-			<h:link outcome="listarUsuario" value="Usu&aacute;rios" /> <br />
-			<h:link outcome="listarSala" value="Salas" /> <br />
+		<c:if test="${usuarioUC.usuarioLogado.funcao == 'a'}">
+			<h:link outcome="listarUsuario" value="Usu&aacute;rios" /> 
+			<h:link outcome="listarSala" value="Salas" /> 
 			<h:link outcome="listarProjetor" value="Projetores" />
 		</c:if>
-		<c:if test="${UsuarioUC.usuarioLogado.funcao == 'p'}">
-			<h:link outcome="formReserva" value="Reservar Projetor" /> <br />
+		<c:if test="${usuarioUC.usuarioLogado.funcao == 'p'}">
+			<h:link outcome="formReserva" value="Reservar Projetor" />
 		</c:if>
-		<c:if test="${UsuarioUC.usuarioLogado.funcao == 'i'}">
-			<h:link outcome="Instalar Projetor" value="instalarProjetor" /> <br />
+		<c:if test="${usuarioUC.usuarioLogado.funcao == 'i'}">
+			<h:link outcome="Instalar Projetor" value="instalarProjetor" />
 		</c:if> 
 	</div>
 	<div><ui:insert name="corpo" /></div>

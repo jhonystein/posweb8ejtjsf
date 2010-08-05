@@ -86,13 +86,7 @@ public class UsuarioUC {
         		FacesMessage msg=new FacesMessage("Nick e/ou senha inv&aacute;lidos.");
     	        throw new ValidatorException(msg);
         	}else
-        		if(usuarioLogado.getFuncao().equals("a"))
-        			return "indexAdmin";
-        		else
-        			if(usuarioLogado.getFuncao().equals("p"))
-            			return "formReserva";
-            		else
-            			return "";
+        		return "indexAdmin";        		
         
 		} catch (Exception e) {
 			e.printStackTrace();

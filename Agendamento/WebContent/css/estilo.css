@@ -1,5 +1,34 @@
 @CHARSET "ISO-8859-1";
 body {
-	background-color: #000;
-	color: #fff;
+	background-color: #F8F8F8;
+	color: #000;
+}
+
+.tabela{
+	width:600px;	
+}
+
+.cabecalho {
+   font-family: Arial, Helvetica, sans-serif;
+   font-weight: bold;
+   font-size: 14px;
+   color: white;
+   background-color: #3D77C0;
+   text-align: center;
+}
+
+.impar {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: black;
+	background-color: beige;
+	text-indent: 11px;
+}
+
+.par {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: black;
+	background-color: #E1ECF7;
+	text-indent: 11px;
 }
