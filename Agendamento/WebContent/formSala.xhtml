@@ -7,7 +7,7 @@
     <ui:composition template="TemplatePadrao.xhtml">
         <ui:param name="titulo" value="Cadastro de Salas"/>
         <ui:define name="corpo">
-			<h:form>
+			<h:form id="formSala">
 				<h:panelGrid columns="3">
 					<h:outputLabel value="Campus"/>
 					<h:selectOneRadio id="campus" value="#{salaUC.sala.campus}" required="true">
