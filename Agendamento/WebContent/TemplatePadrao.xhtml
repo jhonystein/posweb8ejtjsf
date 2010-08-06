@@ -19,9 +19,9 @@
 		<ul>
 		<h:form>
 			<c:if test="${usuarioUC.usuarioLogado.funcao == 'a'}">
-				<h:link outcome="listarUsuario" value="Usu&aacute;rios" /> 
-				<h:link outcome="listarSala" value="Salas" /> 
-				<h:link outcome="listarProjetor" value="Projetores" />
+				<li><h:link outcome="listarUsuario" value="Usu&aacute;rios" /></li> 
+				<li><h:link outcome="listarSala" value="Salas" /></li>
+				<li><h:link outcome="listarProjetor" value="Projetores" /></li>
 			</c:if>
 			<c:if test="${usuarioUC.usuarioLogado.funcao == 'p'}">
 				<li><h:commandLink action="${reservaUC.novo}" value="Reservar Projetor" /></li>
