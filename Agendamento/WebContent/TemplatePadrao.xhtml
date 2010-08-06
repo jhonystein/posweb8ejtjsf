@@ -12,8 +12,9 @@
 </h:head>
 <h:body styleClass="corpo">
 	<div id="site">
-	<div id="cabecalho"><ui:insert name="cabecalho" /> <h:outputText
-		value="Cabecalho" /></div>
+	<div id="cabecalho">
+		<h:graphicImage url="/img/banner.jpg"/>
+	</div>
 	<div id="menu">
 		<ul>
 		<c:if test="${usuarioUC.usuarioLogado.funcao == 'a'}">
@@ -32,8 +33,14 @@
 		</h:form>
 		</ul>
 	</div>
-	<div id="corpo"><ui:insert name="corpo" /></div>
-	<div id="rodape"><ui:insert name="rodape" /> <h:outputText value="Rodape" />
+	<div id="corpo">
+		<h1>#{titulo}</h1>
+		<ui:insert name="corpo" />
+	</div>
+	<div id="rodape">
+		<ui:insert name="rodape" />	
+		<h:outputText value="Trabalho de Java Basico para Web" /><br />
+		<h:outputText value="Equipe: Emerson, Jhony e Tiago" />
 	</div>
 	</div>
 </h:body>

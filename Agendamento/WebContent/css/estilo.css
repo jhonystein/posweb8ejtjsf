@@ -16,48 +16,45 @@
 body {
 	/*background-color: #F1FFC1;*/
 	color: #000;
-	color: #5C9512;
+	color: #00008B;
 }
 
 input { 
 	background-color: #FFFFFF; 
-	color: #5C9512;
-	border: 1px solid #5C9512;
+	color: #00008B;
+	border: 1px solid #00008B;
 	margin: 5px;
 }
 
 
 #site {
-	width: 980px;
-	border: 1px solid #5C9512;
-	background-color: #F1FFC1;
+	width: 800px;
+	border: 1px solid #00008B;
+	background-color: #F8F8FF;
 	float:left;
 }
 
 #rodape {
-	width: 960px;
+	width: 780px;
 	float: left;
-	border-top: 1px solid #5C9512;
+	border-top: 1px solid #00008B;
 	height: 40px;
 	padding: 10px;
 }
 
 #cabecalho {
-	width: 960px;
-	height: 100px;
+	width: 800px;
+	height: 150px;
 	float: left;
-	border-bottom: 1px solid #5C9512;
-	padding: 10px;
+	border-bottom: 1px solid #00008B;
+	padding: 0px;
 }
 
 #corpo{
-	/*background-color:#F8F8F8;
-	border-left:1px solid #DFDFDF;
-	border-right:1px solid #DFDFDF;*/
-	width: 85%;
+	width: 678px;
 	float:left;
 	padding: 10px;
-	border-left: 1px solid #5C9512;
+	border-left: 1px solid #00008B;
 	margin-top: 5px;
 	margin-bottom: 5px;
 }
@@ -102,7 +99,7 @@ input {
 /* Montagem do Menu */
 
 #menu {
-	width: 10%;
+	width: 80px;
 	float: left;
 	padding: 10px;
 	margin-top: 5px;
@@ -116,7 +113,7 @@ input {
   
 }
 #menu li {
-  border-bottom: 1px solid #5C9512;
+  border-bottom: 1px solid #00008B;
   margin: 0;
   height: 28px;
 }
@@ -124,7 +121,7 @@ input {
   display: block;
   padding: 5px 5px 5px 0.5em;
   font-weight:bold;
-  color: #5C9512;
+  color: #00008B;
   text-decoration: none;
 }
 #menu li a:hover {
