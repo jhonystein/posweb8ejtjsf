@@ -1,15 +1,65 @@
 @CHARSET "ISO-8859-1";
+
+*html ul li {
+		float:left;
+		height:1%;
+		}
+*html ul li a{
+		height:1%;
+		}
+
+/* Fix IE. Hide from IE Mac \*/
+* html ul#menubv  li { float: left; height: 1%; }
+* html ul#menubv  li a { height: 1%; }
+/* End */
+
 body {
-	background-color: #F0FFF0;
+	/*background-color: #F1FFC1;*/
 	color: #000;
+	color: #5C9512;
+}
+
+input { 
+	background-color: #FFFFFF; 
+	color: #5C9512;
+	border: 1px solid #5C9512;
+	margin: 5px;
+}
+
+
+#site {
+	width: 980px;
+	border: 1px solid #5C9512;
+	background-color: #F1FFC1;
+	float:left;
+}
+
+#rodape {
+	width: 960px;
+	float: left;
+	border-top: 1px solid #5C9512;
+	height: 40px;
+	padding: 10px;
+}
+
+#cabecalho {
+	width: 960px;
+	height: 100px;
+	float: left;
+	border-bottom: 1px solid #5C9512;
+	padding: 10px;
 }
 
 #corpo{
-	width:990px;
-	margin: 0 auto;
-	background-color:#F8F8F8;
+	/*background-color:#F8F8F8;
 	border-left:1px solid #DFDFDF;
-	border-right:1px solid #DFDFDF;
+	border-right:1px solid #DFDFDF;*/
+	width: 85%;
+	float:left;
+	padding: 10px;
+	border-left: 1px solid #5C9512;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 #login{
@@ -47,4 +97,36 @@ body {
 	color: black;
 	background-color: #E1ECF7;
 	text-indent: 11px;
+}
+
+/* Montagem do Menu */
+
+#menu {
+	width: 10%;
+	float: left;
+	padding: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#menu ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  
+}
+#menu li {
+  border-bottom: 1px solid #5C9512;
+  margin: 0;
+  height: 28px;
+}
+#menu li a {
+  display: block;
+  padding: 5px 5px 5px 0.5em;
+  font-weight:bold;
+  color: #5C9512;
+  text-decoration: none;
+}
+#menu li a:hover {
+  text-decoration: underline;
 }
