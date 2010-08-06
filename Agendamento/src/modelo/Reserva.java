@@ -18,8 +18,10 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name="reserva")
 @NamedQueries({
-@NamedQuery(name="projetorDisponivel", query="select count(p) from Projetor as p where p not in(select r.projetor from Reserva as r where r.data = ?1 and r.campus = ?2 and r.horario = ?3)"),
-@NamedQuery(name="reservaEmAberto", query="select r from Reserva as r where r.data = ?1 and r.campus = ?2 and r.instalado = false")
+	@NamedQuery(name="projetorDisponivel", query="select count(p) from Projetor as p where p not in(select r.projetor from Reserva as r where r.data = ?1 and r.campus = ?2 and r.horario = ?3)"),
+	@NamedQuery(name="reservaEmAberto", query="select r from Reserva as r where r.data = ?1 and r.campus = ?2 and r.instalado = false"),
+	@NamedQuery(name="projetoresReservados", query="select count(r) from Reserva as r where r.data = ?1 and r.campus = ?2 and r.horario = ?3"),
+	@NamedQuery(name="projetoresCount", query="select count(p) from Projetor as p where p.campus = ?1") 
 })
 public class Reserva implements Serializable, IModelo {
 
@@ -28,7 +30,7 @@ public class Reserva implements Serializable, IModelo {
 	@Id
 	@GeneratedValue
 	@Column(name="cd_reserva")
-	private Long codigo = 0L;
+	private Long codigo;
 	
 	@Column(name="dt_reserva")
 	@Temporal(TemporalType.DATE)

@@ -17,19 +17,19 @@
 	</div>
 	<div id="menu">
 		<ul>
-		<c:if test="${usuarioUC.usuarioLogado.funcao == 'a'}">
-			<h:link outcome="listarUsuario" value="Usu&aacute;rios" /> 
-			<h:link outcome="listarSala" value="Salas" /> 
-			<h:link outcome="listarProjetor" value="Projetores" />
-		</c:if>
-		<c:if test="${usuarioUC.usuarioLogado.funcao == 'p'}">
-			<li><h:link outcome="formReserva" value="Reservar Projetor" /></li>
-		</c:if>
-		<c:if test="${usuarioUC.usuarioLogado.funcao == 'i'}">
-			<li><h:link outcome="Instalar Projetor" value="instalarProjetor" /></li>
-		</c:if> 
 		<h:form>
-			<li><h:commandLink action="${usuarioUC.logout}" value="Sair" /> <br /></li>
+			<c:if test="${usuarioUC.usuarioLogado.funcao == 'a'}">
+				<h:link outcome="listarUsuario" value="Usu&aacute;rios" /> 
+				<h:link outcome="listarSala" value="Salas" /> 
+				<h:link outcome="listarProjetor" value="Projetores" />
+			</c:if>
+			<c:if test="${usuarioUC.usuarioLogado.funcao == 'p'}">
+				<li><h:commandLink action="${reservaUC.novo}" value="Reservar Projetor" /></li>
+			</c:if>
+			<c:if test="${usuarioUC.usuarioLogado.funcao == 'i'}">
+				<li><h:link outcome="Instalar Projetor" value="instalarProjetor" /></li>
+			</c:if> 
+			<li><h:commandLink immediate="true" action="${usuarioUC.logout}" value="Sair" /> <br /></li>
 		</h:form>
 		</ul>
 	</div>

@@ -3,9 +3,11 @@ package controle;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIData;
+import javax.faces.context.FacesContext;
 
 import modelo.Reserva;
 import util.JPAUtil;
@@ -17,7 +19,7 @@ public class ReservaUC {
 	
 	private Reserva reserva = new Reserva();
     private UIData select;
-    private ArrayList<Integer> horarios = new ArrayList<Integer>();
+    private final ArrayList<Integer> horarios = new ArrayList<Integer>();
     private boolean mostrarTabela = false;
     private List<Reserva> reservasEmAberto = null;
 		
@@ -46,10 +48,11 @@ public class ReservaUC {
     	JPAUtil jpa = JPAUtil.getInstance();
     	try {
     		JPAReservaDao daoReserva = new JPAReservaDao(jpa);
-    		if(daoReserva.temProjetorDisponivel(reserva)){
+    		if(daoReserva.projetoresReservados(reserva) < daoReserva.projetoresPossiveisReserva(reserva)){
 	    		daoReserva.gravar(reserva);
-	        	return "sucessoReserva";
+	        	return "reservaSucesso";
     		}else
+    			FacesContext.getCurrentInstance().addMessage("data", new FacesMessage("Não existem projetores disponíveis nesta data"));
     			return null;
 		} finally {
 			JPAUtil.finalizar();
@@ -62,7 +65,7 @@ public class ReservaUC {
     }
 
     public String cancelar(){
-         return "indexProfessor";
+         return "indexAdmin";
     }
     
     public List<Reserva> reservas() throws Exception{

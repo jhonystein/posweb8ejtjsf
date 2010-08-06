@@ -127,3 +127,10 @@ input {
 #menu li a:hover {
   text-decoration: underline;
 }
+
+.erro {
+	background-color: red;
+	font-size: 14px;
+	color: black;
+	border: 1px white doted;
+}
