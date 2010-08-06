@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -16,7 +17,10 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="reserva")
-@NamedQuery(name="projetorDisponivel", query="select count(p) from Projetor as p where p not in(select r.projetor from Reserva as r where r.data = ?1 and r.campus = ?2 and r.horario = ?3)")
+@NamedQueries({
+@NamedQuery(name="projetorDisponivel", query="select count(p) from Projetor as p where p not in(select r.projetor from Reserva as r where r.data = ?1 and r.campus = ?2 and r.horario = ?3)"),
+@NamedQuery(name="reservaEmAberto", query="select r from Reserva as r where r.data = ?1 and r.campus = ?2 and r.instalado = false")
+})
 public class Reserva implements Serializable, IModelo {
 
 	private static final long serialVersionUID = 376780444900013139L;
@@ -35,6 +39,9 @@ public class Reserva implements Serializable, IModelo {
 	
 	@Column(name="nr_campus")
 	private int campus=1;
+	
+	@Column(name="bool_instalado")
+	private boolean instalado = false;
 	
 	@ManyToOne
 	@JoinColumn(name="cd_projetor")
@@ -78,6 +85,14 @@ public class Reserva implements Serializable, IModelo {
 
 	public Projetor getProjetor() {
 		return projetor;
+	}
+
+	public void setInstalado(boolean instalado) {
+		this.instalado = instalado;
+	}
+
+	public boolean isInstalado() {
+		return instalado;
 	}
 
 }

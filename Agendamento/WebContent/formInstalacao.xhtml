@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:composition template="TemplatePadrao.xhtml">
+        <ui:param name="titulo" value="Instala&ccedil;&atilde;o de Projetores"/>
+        <ui:define name="corpo">
+			<h:form>
+				<h:panelGrid columns="3">
+				    <h:outputLabel value="Data:"/>
+					<h:inputText id="data" value="#{reservaUC.reserva.data}" required="true">
+						<f:convertDateTime pattern="dd/MM/yyyy"/>
+					</h:inputText>
+					<h:message for="data"/>
+		
+					<h:outputLabel value="Campus:"/>
+					<h:selectOneRadio id="campus" value="#{reservaUC.reserva.campus}" required="true">
+						<f:selectItem itemLabel="1" itemValue="1"/>
+						<f:selectItem itemLabel="2" itemValue="2"/>
+						<f:selectItem itemLabel="3" itemValue="3"/>
+						<f:selectItem itemLabel="4" itemValue="4"/>
+					</h:selectOneRadio>
+					<h:message for="campus"/>
+					<h:commandButton value="Listar reservas" action="#{reservaUC.reservas}"/> 
+					
+					
+	            </h:panelGrid>
+				
+				<h:panelGrid rendered="#{reservaUC.mostrar}">
+					<h:dataTable value="#{reservaUC.reservasEmAberto}" var="reserva" binding="#{reservaUC.select}" headerClass="cabecalho" rowClasses="impar,par" styleClass="tabela" >
+	                    <h:column>
+	                        <f:facet name="header">
+	                            <h:outputText value="Hor&aacute;rio"/>
+	                        </f:facet>
+	                        <h:outputText value="#{reserva.horario}"/>                        
+	                    </h:column>
+	                    <h:column>
+	                        <f:facet name="header">
+	                            <h:outputText value="Projetor"/>
+	                        </f:facet>
+	                        <!--<h:selectOneMenu id="horario" value="#{reservaUC.reserva.horario}">
+								 <f:selectItems value="#{reservaUC.horarios}" var="horario" itemLabel="#{horario}"/>
+							</h:selectOneMenu>
+							<h:message for="horario"/>-->
+			
+	                    </h:column>                    
+	                </h:dataTable>	
+	                <h:commandButton value="Confirmar Instala&ccedil;&atilde;o" action="#{reservaUC.reservas}"/>
+				</h:panelGrid>
+				
+			</h:form>
+			</ui:define>
+    </ui:composition>
+</html>

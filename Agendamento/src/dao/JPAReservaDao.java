@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import javax.persistence.Query;
 
 import modelo.Reserva;
@@ -21,6 +23,14 @@ public class JPAReservaDao extends JPACrudDao<Reserva> {
 			return true;
 		else
 			return false;
+	}
+	
+	public List<Reserva> listarReservasEmAberto(Reserva reserva) throws Exception{
+		Query q = jpa.getEntityManager().createNamedQuery("reservaEmAberto");
+		q.setParameter(1, reserva.getData());
+		q.setParameter(2, reserva.getCampus());
+		System.out.println("Aqui 1");
+		return q.getResultList();
 	}
 
 }

@@ -18,7 +18,9 @@ public class ReservaUC {
 	private Reserva reserva = new Reserva();
     private UIData select;
     private ArrayList<Integer> horarios = new ArrayList<Integer>();
-	
+    private boolean mostrarTabela = false;
+    private List<Reserva> reservasEmAberto = null;
+		
     public ReservaUC() {
     	for(int i= 1; i <= 15; i++)
     		horarios.add(i);
@@ -62,4 +64,28 @@ public class ReservaUC {
     public String cancelar(){
          return "indexProfessor";
     }
+    
+    public List<Reserva> reservas() throws Exception{
+    	JPAUtil jpa = JPAUtil.getInstance();
+    	try {
+    		JPAReservaDao daoReserva = new JPAReservaDao(jpa);
+            reservasEmAberto = daoReserva.listarReservasEmAberto(reserva);
+    		mostrarTabela = true;	
+		} finally {
+			JPAUtil.finalizar();
+		}
+		return getReservasEmAberto();
+    }
+    
+    public boolean isMostrar() {
+    	if (mostrarTabela) { 
+    		return true; 
+    	} else { 
+    		return false; 
+    	}
+    }
+
+	public List<Reserva> getReservasEmAberto() {
+		return reservasEmAberto;
+	}
 }
