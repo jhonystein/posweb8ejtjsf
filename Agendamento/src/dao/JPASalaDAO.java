@@ -1,5 +1,7 @@
 package dao;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.persistence.Query;
 
 import modelo.Sala;
@@ -18,8 +20,10 @@ public class JPASalaDAO extends JPACrudDao<Sala> {
 		q.setParameter(3, sala.getNumeroSala());
 		q.setParameter(4, sala.getCodigo());
 		Long contador = (Long) q.getSingleResult();
-		if(contador > 0)
+		if(contador > 0) {
+			FacesContext.getCurrentInstance().addMessage("formSala:sala", new FacesMessage("Sala já cadastrada!"));
 			return false;
+		}
 		else
 			return true;
 	}
