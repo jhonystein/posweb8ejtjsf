@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  *
@@ -35,6 +36,8 @@ public class Usuario implements IModelo, Serializable {
     
     @Column(name="ds_funcao")
     private String funcao="a";
+    @Transient
+    private String descFuncao = "Administrador";
 
 	public String getFuncao() {
 		return funcao;
@@ -42,6 +45,17 @@ public class Usuario implements IModelo, Serializable {
 	public void setFuncao(String funcao) {
 		this.funcao = funcao;
 	}
+	public String getDescFuncao(){
+		if(funcao.equals("a"))
+			descFuncao = "Administrador";
+		else
+			if(funcao.equals("p"))
+				descFuncao = "Professor";
+			else
+				descFuncao = "Instalador";
+		return descFuncao;
+	}
+	
 	public Long getCodigo() {
 		return codigo;
 	}
