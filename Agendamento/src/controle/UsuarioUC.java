@@ -83,9 +83,9 @@ public class UsuarioUC {
     		JPAUsuarioDao daoUsuario = new JPAUsuarioDao(jpa);
     		usuarioLogado = daoUsuario.buscarUsuario(usuario);
         	if(usuarioLogado == null){
-        		FacesMessage msg=new FacesMessage("Nick e/ou senha inv&aacute;lidos.");
-    	        throw new ValidatorException(msg);
-        	}else
+        		FacesContext.getCurrentInstance().addMessage("senha", new FacesMessage("Nick e/ou senha inválidos!"));
+        		return null;
+    		}else
         		return "indexAdmin";        		
         
 		} catch (Exception e) {

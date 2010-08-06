@@ -2,9 +2,11 @@ package controle;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIData;
+import javax.faces.context.FacesContext;
 
 import modelo.Sala;
 import util.JPAUtil;
@@ -55,7 +57,8 @@ public class SalaUC {
     	    	daoSala.gravar(sala);
     	    	return "listarSala";
         	}else{
-        		return null;
+        		FacesContext.getCurrentInstance().addMessage("formSala:sala", new FacesMessage("Sala já cadastrada!"));
+    			return null;
         	}
 		} finally {
 			JPAUtil.finalizar();
