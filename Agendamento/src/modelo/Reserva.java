@@ -21,7 +21,7 @@ import javax.persistence.Transient;
 @Table(name="reserva")
 @NamedQueries({
 	@NamedQuery(name="temProjetorDisponivel", query="select count(p) from Projetor as p where p not in(select r.projetor from Reserva as r where r.data = ?1 and r.campus = ?2 and r.horario = ?3)"),
-	@NamedQuery(name="projetoresDisponiveis", query="select p from Projetor as p where p not in(select r.projetor from Reserva as r where r.data = ?1 and r.campus = ?2 and r.horario = ?3)"),
+	@NamedQuery(name="projetoresDisponiveis", query="select p from Projetor as p where p.campus = ?2 and p not in(select r.projetor from Reserva as r where r.data = ?1 and r.campus = ?2 and r.horario = ?3)"),
 	@NamedQuery(name="reservaEmAberto", query="select r from Reserva as r where r.data = ?1 and r.campus = ?2 and r.instalado = false"),
 	@NamedQuery(name="projetoresReservados", query="select count(r) from Reserva as r where r.data = ?1 and r.campus = ?2 and r.horario = ?3"),
 	@NamedQuery(name="projetoresCount", query="select count(p) from Projetor as p where p.campus = ?1") 

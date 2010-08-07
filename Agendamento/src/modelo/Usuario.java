@@ -25,16 +25,16 @@ public class Usuario implements IModelo, Serializable {
     @Column(name="cd_usuario")
     private Long codigo;
 
-    @Column(name="ds_nick", unique=true)
+    @Column(name="ds_nick", unique=true, nullable=false)
     private String nick;
     
-    @Column(name="ds_senha")
+    @Column(name="ds_senha", nullable=false)
     private String senha;
     
     @Column(name="ds_email")
     private String email;
     
-    @Column(name="ds_funcao")
+    @Column(name="ds_funcao", nullable=false)
     private String funcao="a";
     @Transient
     private String descFuncao = "Administrador";

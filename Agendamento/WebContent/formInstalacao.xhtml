@@ -41,7 +41,7 @@
 	                            <h:outputText value="Projetor"/>
 	                        </f:facet>
 	                        <h:selectOneMenu id="projetor">
-								 <f:selectItems value="#{reserva.projetoresDisponiveis}" var="projetor" itemLabel="#{projetor.numeroPatrimonio}"/>
+								 <f:selectItems value="#{reserva.projetoresDisponiveis(reservaUC.reserva.campus)}" var="projetor" itemLabel="#{projetor.numeroPatrimonio}"/>
 							</h:selectOneMenu>
 							<h:message for="projetor"/>
 			
