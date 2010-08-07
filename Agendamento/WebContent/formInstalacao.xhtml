@@ -29,7 +29,7 @@
 	            </h:panelGrid>
 				
 				<h:panelGrid rendered="#{reservaUC.mostrar}">
-					<h:dataTable value="#{reservaUC.reservasEmAberto}" var="reserva" binding="#{reservaUC.select}" headerClass="cabecalho" rowClasses="impar,par" styleClass="tabela" >
+					<h:dataTable width="200" value="#{reservaUC.reservasEmAberto}" var="reserva" binding="#{reservaUC.select}" headerClass="cabecalho">
 	                    <h:column>
 	                        <f:facet name="header">
 	                            <h:outputText value="Hor&aacute;rio"/>
@@ -40,10 +40,10 @@
 	                        <f:facet name="header">
 	                            <h:outputText value="Projetor"/>
 	                        </f:facet>
-	                        <!--<h:selectOneMenu id="horario" value="#{reservaUC.reserva.horario}">
-								 <f:selectItems value="#{reservaUC.horarios}" var="horario" itemLabel="#{horario}"/>
+	                        <h:selectOneMenu id="projetor">
+								 <f:selectItems value="#{reserva.projetoresDisponiveis}" var="projetor" itemLabel="#{projetor.numeroPatrimonio}"/>
 							</h:selectOneMenu>
-							<h:message for="horario"/>-->
+							<h:message for="projetor"/>
 			
 	                    </h:column>                    
 	                </h:dataTable>	

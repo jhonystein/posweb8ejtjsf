@@ -73,12 +73,21 @@ public class ReservaUC {
     	try {
     		JPAReservaDao daoReserva = new JPAReservaDao(jpa);
             reservasEmAberto = daoReserva.listarReservasEmAberto(reserva);
+            for(Reserva reservaAux: reservasEmAberto){
+            	reservaAux.setProjetoresDisponiveis(daoReserva.listaProjetoresDisponiveis(reservaAux));
+            }
     		mostrarTabela = true;	
 		} finally {
 			JPAUtil.finalizar();
 		}
 		return getReservasEmAberto();
     }
+    
+    public String novaInstalacao(){
+    	reserva = new Reserva();
+    	return "formInstalacao";
+    }
+
     
     public boolean isMostrar() {
     	if (mostrarTabela) { 

@@ -19,15 +19,15 @@
 		<ul>
 		<h:form>
 			<c:if test="${usuarioUC.usuarioLogado.funcao == 'a'}">
-				<li><h:link outcome="listarUsuario" value="Usu&aacute;rios" /></li> 
-				<li><h:link outcome="listarSala" value="Salas" /></li>
+				<li><h:link outcome="listarUsuario" value="Usu&aacute;rios" /> </li>
+				<li><h:link outcome="listarSala" value="Salas" /> </li>
 				<li><h:link outcome="listarProjetor" value="Projetores" /></li>
 			</c:if>
 			<c:if test="${usuarioUC.usuarioLogado.funcao == 'p'}">
 				<li><h:commandLink action="${reservaUC.novo}" value="Reservar Projetor" /></li>
 			</c:if>
 			<c:if test="${usuarioUC.usuarioLogado.funcao == 'i'}">
-				<li><h:link outcome="Instalar Projetor" value="instalarProjetor" /></li>
+				<li><h:commandLink action="${reservaUC.novaInstalacao}" value="Instalar Projetor" /></li>
 			</c:if> 
 			<li><h:commandLink immediate="true" action="${usuarioUC.logout}" value="Sair" /> <br /></li>
 		</h:form>
