@@ -60,7 +60,7 @@ input {
 }
 
 #login{
-	width:250px;
+	width:300px;
 	margin: 0 auto;
 	background-color:#F8F8F8;
 	border-left:1px solid #DFDFDF;
@@ -135,6 +135,18 @@ input {
 	border: 1px white doted;
 }
 
+/* Links */
+	
+a {
+  padding: 5px 5px 5px 0.5em;
+  font-weight:bold;
+  color: #00008B;
+  text-decoration: none;
+}
+
 a, a:HOVER, a:VISITED {
 	margin: 5px;
+}
+a:hover {
+	text-decoration: underline;
 }
