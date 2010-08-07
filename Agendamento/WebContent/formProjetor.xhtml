@@ -8,10 +8,11 @@
         <ui:param name="titulo" value="Cadastro de Projetores"/>
         <ui:define name="corpo">
 			<h:form>
+				<h:messages></h:messages>
 				<h:panelGrid columns="3">
 				    <h:outputLabel value="N&uacute;mero do Patrim&ocirc;nio"/>
 					<h:inputText id="patrimonio" value="#{projetorUC.projetor.numeroPatrimonio}" required="true"/>
-					<h:message for="patrimonio"/>
+					<h:message for="patrimonio"></h:message>
 		
 				    <h:outputLabel value="Campus"/>
 					<h:selectOneRadio id="campus" value="#{projetorUC.projetor.campus}" required="true">

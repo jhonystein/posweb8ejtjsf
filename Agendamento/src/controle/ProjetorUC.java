@@ -2,9 +2,12 @@ package controle;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIData;
+import javax.faces.context.FacesContext;
+import javax.persistence.PersistenceException;
 
 import modelo.Projetor;
 import util.JPAUtil;
@@ -47,12 +50,15 @@ public class ProjetorUC {
 		}
     }
 
-    public String salvar() throws Exception{
+    public String salvar() throws Exception {
     	JPAUtil jpa = JPAUtil.getInstance();
     	try {
     		JPACrudDao<Projetor> daoProjetor = new JPACrudDao<Projetor>(jpa , Projetor.class);
     		daoProjetor.gravar(projetor);
         	return "listarProjetor";
+    	} catch (PersistenceException e) {
+    		FacesContext.getCurrentInstance().addMessage("patrimonio", new FacesMessage("Número de patrimônio já cadastrado"));
+			return null;
 		} finally {
 			JPAUtil.finalizar();
 		}

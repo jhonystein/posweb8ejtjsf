@@ -134,3 +134,7 @@ input {
 	color: black;
 	border: 1px white doted;
 }
+
+a, a:HOVER, a:VISITED {
+	margin: 5px;
+}
