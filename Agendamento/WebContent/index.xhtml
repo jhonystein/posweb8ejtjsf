@@ -11,13 +11,14 @@
 			<fieldset>
     			<legend>Login:</legend>
     			<h:form>
+    				<h:messages></h:messages>
 					<h:panelGrid columns="3">
 						<h:outputLabel value="Nick"/>
-						<h:inputText id="nick" value="#{usuarioUC.usuario.nick}" required="true"/>
+						<h:inputText id="nick" value="#{usuarioUC.usuario.nick}"/>
 						<h:message for="nick"/>
 			
 					    <h:outputLabel value="Senha"/>
-						<h:inputSecret id="senha" value="#{usuarioUC.usuario.senha}" required="true"/>
+						<h:inputSecret id="senha" value="#{usuarioUC.usuario.senha}"/>
 						<h:message for="senha"/>
 					</h:panelGrid>
 					<h:commandButton value="Logar" action="#{usuarioUC.logar}"/>
