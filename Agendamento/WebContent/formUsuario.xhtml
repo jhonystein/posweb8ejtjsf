@@ -8,6 +8,7 @@
         <ui:param name="titulo" value="Cadastro de Usu&aacute;rios"/>
         <ui:define name="corpo">
 		<h:form>
+			<h:messages></h:messages>
 			<h:panelGrid columns="3">
 				<h:outputLabel value="Nick"/>
 				<h:inputText id="nick" value="#{usuarioUC.usuario.nick}" require="true"/>

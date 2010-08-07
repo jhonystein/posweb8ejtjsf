@@ -9,6 +9,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.component.UIData;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
+import javax.persistence.PersistenceException;
 
 import modelo.Usuario;
 import util.JPAUtil;
@@ -56,9 +57,12 @@ public class UsuarioUC {
     public String salvar() throws Exception{
     	JPAUtil jpa = JPAUtil.getInstance();
     	try {
-    		JPACrudDao<Usuario> daoUsuario = new JPACrudDao<Usuario>(jpa , Usuario.class);
-        	daoUsuario.gravar(usuario);
-        	return "listarUsuario";
+    		JPACrudDao<Usuario> daoProjetor = new JPACrudDao<Usuario>(jpa , Usuario.class);
+    		daoProjetor.gravar(usuario);
+        	return "listarProjetor";
+    	} catch (PersistenceException e) {
+    		FacesContext.getCurrentInstance().addMessage("nick", new FacesMessage("Nick de usuário já utilizado"));
+			return null;
 		} finally {
 			JPAUtil.finalizar();
 		}
