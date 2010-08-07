@@ -32,16 +32,16 @@
 					<h:message for="campus"/>
 					
 					<h:outputLabel value="Blocos:"/>
-					<h:selectOneMenu  value="#{reservaUC.reserva.sala.bloco}" id="bloco" valueChangeListener="#{reservaUC.atualizarSalasPeloBloco}" immediate="true" onchange="submit()">
-						 <f:selectItems value="#{reservaUC.blocosPeloCampus}" var="sala" itemLabel="#{sala}"/>
+					<h:selectOneMenu value="#{reservaUC.reserva.sala.bloco}" id="bloco" valueChangeListener="#{reservaUC.atualizarSalasPeloBloco}" immediate="true" onchange="submit()">
+						 <f:selectItems value="#{reservaUC.blocosPeloCampus}" var="bloco" itemLabel="#{bloco}"/>
 					</h:selectOneMenu>
 					<h:message for="bloco"/>
 					
 				 	<h:outputLabel value="Salas:"/>
-					<h:selectOneMenu value="#{reservaUC.reserva.sala}" id="sala">
+					<h:selectOneMenu value="#{reservaUC.reserva.sala}">
 						 <f:selectItems value="#{reservaUC.salasPeloBloco}" var="sala2" itemLabel="#{sala2.numeroSala}"/>
 					</h:selectOneMenu>
-					<h:message for="sala"/>
+					
 		 
 				</h:panelGrid>
 				

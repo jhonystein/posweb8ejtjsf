@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -42,14 +43,14 @@ public class Reserva implements Serializable, IModelo {
 	@Column(name="nr_horario")
 	private int horario=1;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="cd_sala")
 	private Sala sala = new Sala();
 	
 	@Column(name="bool_instalado")
 	private boolean instalado = false;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="cd_projetor")
 	private Projetor projetor;
 	

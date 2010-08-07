@@ -6,9 +6,11 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIComponent;
 import javax.faces.component.UIData;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
+import javax.faces.validator.ValidatorException;
 
 import modelo.Reserva;
 import modelo.Sala;
@@ -85,6 +87,7 @@ public class ReservaUC {
     	JPAUtil jpa = JPAUtil.getInstance();
     	try {
     		reserva.getSala().setBloco((String)event.getNewValue());
+    		//reserva.setSala(new JPASalaDAO(jpa).ler(1L));
     		salasPeloBloco = new JPASalaDAO(jpa).listaSalasPeloBlocoECampus(reserva.getSala());            	
     	} finally {
 			JPAUtil.finalizar();
@@ -96,6 +99,10 @@ public class ReservaUC {
     	atualizarDadosCombo(reserva.getSala());
     }
     
+    public void teste(FacesContext facesContex, UIComponent validate, Object value) throws ValidatorException {
+	    reserva.setSala((Sala)value);
+	}
+    
     private void atualizarDadosCombo(Sala sala)throws Exception{
     	JPAUtil jpa = JPAUtil.getInstance();
     	try {
@@ -103,7 +110,8 @@ public class ReservaUC {
     		blocosPeloCampus = jpaSala.listaBlocosPeloCampus(sala);
     		if(blocosPeloCampus.size() > 0)//atribuir o valor do primeiro bloco para vir a pesquisa com as salas
     			sala.setBloco(blocosPeloCampus.get(0));
-    		salasPeloBloco = jpaSala.listaSalasPeloBlocoECampus(sala);            	
+//    		salasPeloBloco = jpaSala.listaSalasPeloBlocoECampus(sala);  
+    		salasPeloBloco = jpaSala.listarTodos();  
 		} finally {
 			JPAUtil.finalizar();
 		}

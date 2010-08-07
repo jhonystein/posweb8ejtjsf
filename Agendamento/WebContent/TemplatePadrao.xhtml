@@ -25,6 +25,7 @@
 				<li><h:link outcome="listarSala" value="Salas" /> </li>
 				<li><h:link outcome="listarProjetor" value="Projetores" /></li>
 			</c:if>
+			<li><h:link outcome="testesala" value="TesteSala" /></li>
 			<c:if test="${usuarioUC.usuarioLogado.funcao == 'p'}">
 				<li><h:commandLink action="${reservaUC.novo}" value="Reservar Projetor" /></li>
 			</c:if>

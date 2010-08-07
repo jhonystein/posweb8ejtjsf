@@ -66,5 +66,12 @@ public class Sala implements Serializable, IModelo {
 	public void setNumeroSala(int numeroSala) {
 		this.numeroSala = numeroSala;
 	}
-		
+
+	@Override
+	public boolean equals(Object obj) {
+		Sala o = (Sala)obj;
+		System.out.println("equals ==> " + o.getCodigo() + " " + getCodigo());
+		return o.codigo == this.codigo;
+	}
+	
 }
