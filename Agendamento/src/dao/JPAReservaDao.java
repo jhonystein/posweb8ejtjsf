@@ -17,7 +17,7 @@ public class JPAReservaDao extends JPACrudDao<Reserva> {
 	public boolean temProjetorDisponivel(Reserva reserva) throws Exception{
 		Query q = jpa.getEntityManager().createNamedQuery("temProjetorDisponivel");
 		q.setParameter(1, reserva.getData());
-		q.setParameter(2, reserva.getCampus());
+		q.setParameter(2, reserva.getSala().getCampus());
 		q.setParameter(3, reserva.getHorario());
 		Long contador = (Long) q.getSingleResult();
 		if(contador > 0)
@@ -29,7 +29,7 @@ public class JPAReservaDao extends JPACrudDao<Reserva> {
 	public List<Projetor> listaProjetoresDisponiveis(Reserva reserva) throws Exception{
 		Query q = jpa.getEntityManager().createNamedQuery("projetoresDisponiveis");
 		q.setParameter(1, reserva.getData());
-		q.setParameter(2, reserva.getCampus());
+		q.setParameter(2, reserva.getSala().getCampus());
 		q.setParameter(3, reserva.getHorario());
 		return q.getResultList();
 	}
@@ -37,7 +37,7 @@ public class JPAReservaDao extends JPACrudDao<Reserva> {
 	public Long projetoresReservados(Reserva reserva) {
 		Query q = jpa.getEntityManager().createNamedQuery("projetoresReservados");
 		q.setParameter(1, reserva.getData());
-		q.setParameter(2, reserva.getCampus());
+		q.setParameter(2, reserva.getSala().getCampus());
 		q.setParameter(3, reserva.getHorario());
 		return (Long)q.getSingleResult();
 	}
@@ -50,14 +50,14 @@ public class JPAReservaDao extends JPACrudDao<Reserva> {
 
 	public Long projetoresPossiveisReserva(Reserva reserva) {
 		Query q = jpa.getEntityManager().createNamedQuery("projetoresCount");
-		q.setParameter(1, reserva.getCampus());
+		q.setParameter(1, reserva.getSala().getCampus());
 		return (Long)q.getSingleResult();
 	}
 	
 	public List<Reserva> listarReservasEmAberto(Reserva reserva) throws Exception{
 		Query q = jpa.getEntityManager().createNamedQuery("reservaEmAberto");
 		q.setParameter(1, reserva.getData());
-		q.setParameter(2, reserva.getCampus());
+		q.setParameter(2, reserva.getSala().getCampus());
 		return q.getResultList();
 	}
 

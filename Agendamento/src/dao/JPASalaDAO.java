@@ -1,7 +1,11 @@
 package dao;
 
+import java.util.List;
+
 import javax.persistence.Query;
 
+import modelo.Projetor;
+import modelo.Reserva;
 import modelo.Sala;
 import util.JPAUtil;
 
@@ -23,6 +27,19 @@ public class JPASalaDAO extends JPACrudDao<Sala> {
 		}
 		else
 			return true;
+	}
+	
+	public List<String> listaBlocosPeloCampus(Sala sala) throws Exception{
+		Query q = jpa.getEntityManager().createNamedQuery("blocosPorCampus");
+		q.setParameter(1, sala.getCampus());
+		return q.getResultList();
+	}
+	
+	public List<Sala> listaSalasPeloBlocoECampus(Sala sala) throws Exception{
+		Query q = jpa.getEntityManager().createNamedQuery("salasPorBlocoECampus");
+		q.setParameter(1, sala.getCampus());
+		q.setParameter(2, sala.getBloco());
+		return q.getResultList();
 	}
 
 }

@@ -6,12 +6,17 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="sala")
-@NamedQuery(name="salaCampus", query="select count(s) from Sala as s where s.campus = ?1 and s.bloco = ?2 and s.numeroSala = ?3 and s.codigo <> ?4")
+@NamedQueries({
+@NamedQuery(name="salaCampus", query="select count(s) from Sala as s where s.campus = ?1 and s.bloco = ?2 and s.numeroSala = ?3 and s.codigo <> ?4"),
+@NamedQuery(name="blocosPorCampus", query="select distinct(s.bloco) from Sala as s where s.campus = ?1 order by s.bloco"),
+@NamedQuery(name="salasPorBlocoECampus", query="select s from Sala as s where s.campus = ?1 and s.bloco = ?2")
+})
 public class Sala implements Serializable, IModelo {
 
 	private static final long serialVersionUID = 8984474499580892379L;

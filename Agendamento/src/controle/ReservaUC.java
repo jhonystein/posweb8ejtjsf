@@ -8,10 +8,13 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIData;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ValueChangeEvent;
 
 import modelo.Reserva;
+import modelo.Sala;
 import util.JPAUtil;
 import dao.JPAReservaDao;
+import dao.JPASalaDAO;
 
 @SessionScoped
 @ManagedBean(name="reservaUC")
@@ -22,7 +25,9 @@ public class ReservaUC {
     private final ArrayList<Integer> horarios = new ArrayList<Integer>();
     private boolean mostrarTabela = false;
     private List<Reserva> reservasEmAberto = null;
-		
+    private List<String> blocosPeloCampus = null;
+    private List<Sala> salasPeloBloco = null;
+    
     public ReservaUC() {
     	for(int i= 1; i <= 15; i++)
     		horarios.add(i);
@@ -49,6 +54,7 @@ public class ReservaUC {
     	try {
     		JPAReservaDao daoReserva = new JPAReservaDao(jpa);
     		if(daoReserva.projetoresReservados(reserva) < daoReserva.projetoresPossiveisReserva(reserva)){
+    			System.out.println(reserva.getSala().getCodigo());
 	    		daoReserva.gravar(reserva);
 	        	return "reservaSucesso";
     		}else
@@ -58,15 +64,55 @@ public class ReservaUC {
 			JPAUtil.finalizar();
 		}
     }
+    
+    
 
-    public String novo(){
+    public String novo() throws Exception{
         reserva = new Reserva();
+        atualizarDadosCombo(reserva.getSala());
         return "formReserva";
     }
 
     public String cancelar(){
          return "indexAdmin";
     }
+    
+    public List<String> getBlocosPeloCampus(){
+    	return blocosPeloCampus;
+    }
+    
+    public void atualizarSalasPeloBloco(ValueChangeEvent event) throws Exception{
+    	JPAUtil jpa = JPAUtil.getInstance();
+    	try {
+    		reserva.getSala().setBloco((String)event.getNewValue());
+    		salasPeloBloco = new JPASalaDAO(jpa).listaSalasPeloBlocoECampus(reserva.getSala());            	
+    	} finally {
+			JPAUtil.finalizar();
+		}		
+    }
+    
+    public void atualizouCampus(ValueChangeEvent event) throws Exception{
+    	reserva.getSala().setCampus(Integer.valueOf(String.valueOf(event.getNewValue())));
+    	atualizarDadosCombo(reserva.getSala());
+    }
+    
+    private void atualizarDadosCombo(Sala sala)throws Exception{
+    	JPAUtil jpa = JPAUtil.getInstance();
+    	try {
+    		JPASalaDAO jpaSala = new JPASalaDAO(jpa);
+    		blocosPeloCampus = jpaSala.listaBlocosPeloCampus(sala);
+    		if(blocosPeloCampus.size() > 0)//atribuir o valor do primeiro bloco para vir a pesquisa com as salas
+    			sala.setBloco(blocosPeloCampus.get(0));
+    		salasPeloBloco = jpaSala.listaSalasPeloBlocoECampus(sala);            	
+		} finally {
+			JPAUtil.finalizar();
+		}
+    }
+    
+    public List<Sala> getSalasPeloBloco(){
+    	return salasPeloBloco;
+    }
+
     
     public String reservas() throws Exception{
     	JPAUtil jpa = JPAUtil.getInstance();

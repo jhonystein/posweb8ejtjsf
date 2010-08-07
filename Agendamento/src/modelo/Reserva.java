@@ -20,10 +20,10 @@ import javax.persistence.Transient;
 @Entity
 @Table(name="reserva")
 @NamedQueries({
-	@NamedQuery(name="temProjetorDisponivel", query="select count(p) from Projetor as p where p not in(select r.projetor from Reserva as r where r.data = ?1 and r.campus = ?2 and r.horario = ?3)"),
-	@NamedQuery(name="projetoresDisponiveis", query="select p from Projetor as p where p.campus = ?2 and p not in(select r.projetor from Reserva as r where r.data = ?1 and r.campus = ?2 and r.horario = ?3)"),
-	@NamedQuery(name="reservaEmAberto", query="select r from Reserva as r where r.data = ?1 and r.campus = ?2 and r.instalado = false"),
-	@NamedQuery(name="projetoresReservados", query="select count(r) from Reserva as r where r.data = ?1 and r.campus = ?2 and r.horario = ?3"),
+	@NamedQuery(name="temProjetorDisponivel", query="select count(p) from Projetor as p where p not in(select r.projetor from Reserva as r where r.data = ?1 and r.sala.campus = ?2 and r.horario = ?3)"),
+	@NamedQuery(name="projetoresDisponiveis", query="select p from Projetor as p where p.campus = ?2 and p not in(select r.projetor from Reserva as r where r.data = ?1 and r.sala.campus = ?2 and r.horario = ?3)"),
+	@NamedQuery(name="reservaEmAberto", query="select r from Reserva as r where r.data = ?1 and r.sala.campus = ?2 and r.instalado = false"),
+	@NamedQuery(name="projetoresReservados", query="select count(r) from Reserva as r where r.data = ?1 and r.sala.campus = ?2 and r.horario = ?3"),
 	@NamedQuery(name="projetoresCount", query="select count(p) from Projetor as p where p.campus = ?1") 
 })
 public class Reserva implements Serializable, IModelo {
@@ -42,8 +42,9 @@ public class Reserva implements Serializable, IModelo {
 	@Column(name="nr_horario")
 	private int horario=1;
 	
-	@Column(name="nr_campus")
-	private int campus=1;
+	@ManyToOne
+	@JoinColumn(name="cd_sala")
+	private Sala sala = new Sala();
 	
 	@Column(name="bool_instalado")
 	private boolean instalado = false;
@@ -79,14 +80,6 @@ public class Reserva implements Serializable, IModelo {
 		this.horario = horario;
 	}
 
-	public int getCampus() {
-		return campus;
-	}
-
-	public void setCampus(int campus) {
-		this.campus = campus;
-	}
-
 	public void setProjetor(Projetor projetor) {
 		this.projetor = projetor;
 	}
@@ -109,6 +102,14 @@ public class Reserva implements Serializable, IModelo {
 
 	public List<Projetor> getProjetoresDisponiveis() {
 		return projetoresDisponiveis;
+	}
+
+	public void setSala(Sala sala) {
+		this.sala = sala;
+	}
+
+	public Sala getSala() {
+		return sala;
 	}
 
 }
