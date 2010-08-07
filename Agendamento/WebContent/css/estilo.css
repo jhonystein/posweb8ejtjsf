@@ -51,7 +51,7 @@ input {
 }
 
 #corpo{
-	width: 678px;
+	width: 608px;
 	float:left;
 	padding: 10px;
 	border-left: 1px solid #00008B;
@@ -99,7 +99,7 @@ input {
 /* Montagem do Menu */
 
 #menu {
-	width: 80px;
+	width: 150px;
 	float: left;
 	padding: 10px;
 	margin-top: 5px;
