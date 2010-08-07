@@ -24,33 +24,8 @@
 					</h:selectOneRadio>
 					<h:message for="campus"/>
 					<h:commandButton value="Listar reservas" action="#{reservaUC.reservas}"/> 
-					
-					
 	            </h:panelGrid>
-				
-				<h:panelGrid rendered="#{reservaUC.mostrar}">
-					<h:dataTable width="200" value="#{reservaUC.reservasEmAberto}" var="reserva" binding="#{reservaUC.select}" headerClass="cabecalho">
-	                    <h:column>
-	                        <f:facet name="header">
-	                            <h:outputText value="Hor&aacute;rio"/>
-	                        </f:facet>
-	                        <h:outputText value="#{reserva.horario}"/>                        
-	                    </h:column>
-	                    <h:column>
-	                        <f:facet name="header">
-	                            <h:outputText value="Projetor"/>
-	                        </f:facet>
-	                        <h:selectOneMenu id="projetor">
-								 <f:selectItems value="#{reserva.projetoresDisponiveis}" var="projetor" itemLabel="#{projetor.numeroPatrimonio}"/>
-							</h:selectOneMenu>
-							<h:message for="projetor"/>
-			
-	                    </h:column>                    
-	                </h:dataTable>	
-	                <h:commandButton value="Confirmar Instala&ccedil;&atilde;o" action="#{reservaUC.reservas}"/>
-				</h:panelGrid>
-				
 			</h:form>
-			</ui:define>
+		</ui:define>
     </ui:composition>
 </html>

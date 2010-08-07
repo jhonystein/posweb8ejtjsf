@@ -68,7 +68,7 @@ public class ReservaUC {
          return "indexAdmin";
     }
     
-    public List<Reserva> reservas() throws Exception{
+    public String reservas() throws Exception{
     	JPAUtil jpa = JPAUtil.getInstance();
     	try {
     		JPAReservaDao daoReserva = new JPAReservaDao(jpa);
@@ -80,7 +80,7 @@ public class ReservaUC {
 		} finally {
 			JPAUtil.finalizar();
 		}
-		return getReservasEmAberto();
+		return "listarInstalacao";
     }
     
     public String novaInstalacao(){
