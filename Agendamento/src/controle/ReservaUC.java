@@ -100,4 +100,26 @@ public class ReservaUC {
 	public List<Reserva> getReservasEmAberto() {
 		return reservasEmAberto;
 	}
+	
+	public String salvarInstalacao() throws Exception{
+		JPAUtil jpa = JPAUtil.getInstance();
+    	try {
+    		JPAReservaDao daoReserva = new JPAReservaDao(jpa);
+    		for(Reserva reservaAux: reservasEmAberto){
+    			if(reservaAux.getProjetor() != null){
+	    			reservaAux.setInstalado(true);
+	    			daoReserva.gravar(reserva);
+    			}
+    		}
+    		/*if(daoReserva.projetoresReservados(reserva) < daoReserva.projetoresPossiveisReserva(reserva)){
+	    		daoReserva.gravar(reserva);
+	        	return "reservaSucesso";
+    		}else
+    			FacesContext.getCurrentInstance().addMessage("data", new FacesMessage("Não existem projetores disponíveis nesta data"));
+    			return null;*/
+		} finally {
+			JPAUtil.finalizar();
+		}
+		return null;
+	}
 }

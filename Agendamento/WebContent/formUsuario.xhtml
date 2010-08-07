@@ -11,11 +11,11 @@
 			<h:messages></h:messages>
 			<h:panelGrid columns="3">
 				<h:outputLabel value="Nick"/>
-				<h:inputText id="nick" value="#{usuarioUC.usuario.nick}" require="true"/>
+				<h:inputText id="nick" value="#{usuarioUC.usuario.nick}" required="true"/>
 				<h:message for="nick"/>
 			
 			    <h:outputLabel value="Senha"/>
-				<h:inputSecret id="senha" value="#{usuarioUC.usuario.senha}"/>
+				<h:inputSecret id="senha" value="#{usuarioUC.usuario.senha}" required="true"/>
 				<h:message for="senha"/>
 	
 			    <h:outputLabel value="E-Mail"/>

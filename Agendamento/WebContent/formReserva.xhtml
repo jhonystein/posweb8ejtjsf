@@ -17,7 +17,7 @@
 					<h:message for="data"/>
 		
 					<h:outputLabel value="Hor&aacute;rio:"/>
-					<h:selectOneMenu id="horario" value="#{reservaUC.reserva.horario}">
+					<h:selectOneMenu id="horario" value="#{reservaUC.reserva.horario}" required="true">
 						 <f:selectItems value="#{reservaUC.horarios}" var="horario" itemLabel="#{horario}"/>
 					</h:selectOneMenu>
 					<h:message for="horario"/>

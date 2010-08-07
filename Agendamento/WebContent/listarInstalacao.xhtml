@@ -21,13 +21,14 @@
 	                            <h:outputText value="Projetor"/>
 	                        </f:facet>
 	                        <h:selectOneMenu id="projetor">
+	                        	 <f:selectItem itemLabel="Selecione um projetor" />
 								 <f:selectItems value="#{reserva.projetoresDisponiveis}" var="projetor" itemLabel="#{projetor.numeroPatrimonio}" />
 							</h:selectOneMenu>
 							<h:message for="projetor"/>
 			
 	                    </h:column>                    
 	                </h:dataTable>	
-	                <h:commandButton value="Confirmar Instala&ccedil;&atilde;o" action="#{reservaUC.reservas}"/>
+	                <h:commandButton value="Confirmar Instala&ccedil;&atilde;o" action="#{reservaUC.salvarInstalacao}"/>
 				</h:panelGrid>
 			</h:form>
 		</ui:define>

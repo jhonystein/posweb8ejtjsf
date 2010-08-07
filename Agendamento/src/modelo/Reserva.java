@@ -35,7 +35,7 @@ public class Reserva implements Serializable, IModelo {
 	@Column(name="cd_reserva")
 	private Long codigo;
 	
-	@Column(name="dt_reserva")
+	@Column(name="dt_reserva", nullable=false)
 	@Temporal(TemporalType.DATE)
 	private Date data = new Date();
 	

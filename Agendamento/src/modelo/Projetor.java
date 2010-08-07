@@ -19,7 +19,7 @@ public class Projetor implements Serializable, IModelo {
 	@Column(name="cd_projetor")
 	private Long codigo;
 	
-	@Column(name="nr_patrimonio", unique=true)
+	@Column(name="nr_patrimonio", unique=true, nullable=false)
 	private String numeroPatrimonio;
 	
 	@Column(name="nr_campus")
