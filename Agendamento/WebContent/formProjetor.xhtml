@@ -5,16 +5,16 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <ui:composition template="TemplatePadrao.xhtml">
-        <ui:param name="titulo" value="Cadastro de Projetores"/>
+        <ui:param name="titulo" value="#{msg.cadPatrimonio}"/>
         <ui:define name="corpo">
 			<h:form>
 				<h:messages></h:messages>
 				<h:panelGrid columns="3">
-				    <h:outputLabel value="N&uacute;mero do Patrim&ocirc;nio"/>
+				    <h:outputLabel value="#{msg.numPatrimonio}:"/>
 					<h:inputText id="patrimonio" value="#{projetorUC.projetor.numeroPatrimonio}" required="true"/>
 					<h:message for="patrimonio"></h:message>
 		
-				    <h:outputLabel value="Campus"/>
+				    <h:outputLabel value="#{msg.campus}:"/>
 					<h:selectOneRadio id="campus" value="#{projetorUC.projetor.campus}" required="true">
 						<f:selectItem itemLabel="1" itemValue="1"/>
 						<f:selectItem itemLabel="2" itemValue="2"/>
@@ -25,8 +25,8 @@
 		
 				</h:panelGrid>
 				
-				<h:commandButton value="Salvar" action="#{projetorUC.salvar}"/>
-                <h:commandButton value="Cancelar" action="#{projetorUC.cancelar}" immediate="true"/>
+				<h:commandButton value="#{msg.salvar}" action="#{projetorUC.salvar}"/>
+                <h:commandButton value="#{msg.cancelar}" action="#{projetorUC.cancelar}" immediate="true"/>
 			</h:form>
 			</ui:define>
     </ui:composition>

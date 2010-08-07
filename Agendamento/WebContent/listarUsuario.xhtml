@@ -5,13 +5,13 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <ui:composition template="TemplatePadrao.xhtml">
-        <ui:param name="titulo" value="Lista de Usu&aacute;rios"/>
+        <ui:param name="titulo" value="#{msg.listUsuario}:"/>
         <ui:define name="corpo">
             <h:form>
                 <h:dataTable value="#{usuarioUC.usuarios}" var="usuario" binding="#{usuarioUC.select}" headerClass="cabecalho" rowClasses="impar,par" styleClass="tabela">
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Nick"/>
+                            <h:outputText value="#{msg.nick}"/>
                         </f:facet>
                         <h:commandLink action="#{usuarioUC.selecione}">
                         	<h:outputText value="#{usuario.nick}"/>
@@ -19,19 +19,19 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="E-mail"/>
+                            <h:outputText value="#{msg.email}"/>
                         </f:facet>
                         <h:outputText value="#{usuario.email}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Fun&ccedil;&atilde;o"/>
+                            <h:outputText value="#{msg.funcao}"/>
                         </f:facet>
                         <h:outputText value="#{usuario.descFuncao}"/>
                     </h:column>
                 </h:dataTable>
-                <h:commandLink action="#{usuarioUC.novo}" value="Novo"/>
-                <h:link outcome="indexAdmin" value="Home"/>
+                <h:commandLink action="#{usuarioUC.novo}" value="#{msg.novo}"/>
+                <h:link outcome="indexAdmin" value="#{msg.home}"/>
             </h:form>
         </ui:define>
     </ui:composition>

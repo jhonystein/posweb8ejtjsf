@@ -5,11 +5,11 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <ui:composition template="TemplatePadrao.xhtml">
-        <ui:param name="titulo" value="Cadastro de Salas"/>
+        <ui:param name="titulo" value="#{msg.cadSala}"/>
         <ui:define name="corpo">
 			<h:form id="formSala">
 				<h:panelGrid columns="3">
-					<h:outputLabel value="Campus"/>
+					<h:outputLabel value="#{msg.campus}:"/>
 					<h:selectOneRadio id="campus" value="#{salaUC.sala.campus}" required="true">
 						<f:selectItem itemLabel="1" itemValue="1"/>
 						<f:selectItem itemLabel="2" itemValue="2"/>
@@ -18,16 +18,16 @@
 					</h:selectOneRadio>
 					<h:message for="campus"/>
 		
-				    <h:outputLabel value="Bloco"/>
+				    <h:outputLabel value="#{msg.bloco}:"/>
 					<h:inputText id="bloco" value="#{salaUC.sala.bloco}" required="true"/>
 					<h:message for="bloco"/>
 		
-				    <h:outputLabel value="Sala"/>
+				    <h:outputLabel value="#{msg.sala}:"/>
 					<h:inputText id="sala" value="#{salaUC.sala.numeroSala}" required="true"/>
 					<h:message for="sala"/>
 				</h:panelGrid>
-				<h:commandButton value="Salvar" action="#{salaUC.salvar}"/>
-                <h:commandButton value="Cancelar" action="#{salaUC.cancelar}" immediate="true"/>				
+				<h:commandButton value="#{msg.salvar}" action="#{salaUC.salvar}"/>
+                <h:commandButton value="#{msg.cancelar}" action="#{salaUC.cancelar}" immediate="true"/>				
 			</h:form>
       </ui:define>
     </ui:composition>

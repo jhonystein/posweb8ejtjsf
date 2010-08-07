@@ -1,30 +1,34 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html">
     <h:head>
         <title>Agendamentos</title>
         <link href="#{facesContext.externalContext.requestContextPath}/css/estilo.css" rel="stylesheet" type="text/css" />
     </h:head>
     <h:body>
+    <f:view>
+            <f:loadBundle basename="messages" var="msg"/>
     	<div id="login">
 			<fieldset>
     			<legend>Login:</legend>
     			<h:form>
     				<h:messages></h:messages>
 					<h:panelGrid columns="3">
-						<h:outputLabel value="Nick"/>
+						<h:outputLabel value="#{msg.nick}:"/>
 						<h:inputText id="nick" value="#{usuarioUC.usuario.nick}"/>
 						<h:message for="nick"/>
 			
-					    <h:outputLabel value="Senha"/>
+					    <h:outputLabel value="#{msg.senha}:"/>
 						<h:inputSecret id="senha" value="#{usuarioUC.usuario.senha}"/>
 						<h:message for="senha"/>
 					</h:panelGrid>
-					<h:commandButton value="Logar" action="#{usuarioUC.logar}"/>
+					<h:commandButton value="#{msg.logar}:" action="#{usuarioUC.logar}"/>
 					<h:commandLink action="#{manipulacaoBancoUC.criarBancoDados}" value="Inicializar banco de dados" immediate="true"/>
 				</h:form>	
 			</fieldset>		
 	    </div>
+	    </f:view>
 	 </h:body>
 </html>

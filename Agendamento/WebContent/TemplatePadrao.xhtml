@@ -11,6 +11,8 @@
 	<link href="#{facesContext.externalContext.requestContextPath}/css/estilo.css" rel="stylesheet" type="text/css" />
 </h:head>
 <h:body styleClass="corpo">
+	<f:view>
+            <f:loadBundle basename="messages" var="msg"/>
 	<div id="site">
 	<div id="cabecalho">
 		<h:graphicImage url="/img/banner.jpg"/>
@@ -43,5 +45,6 @@
 		<h:outputText value="Equipe: Emerson, Jhony e Tiago" />
 	</div>
 	</div>
+	</f:view>
 </h:body>
 </html>

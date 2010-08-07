@@ -5,10 +5,10 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <ui:composition template="TemplatePadrao.xhtml">
-        <ui:param name="titulo" value="Reserva realizada com sucesso."/>
+        <ui:param name="titulo" value="#{msg.reservaSucesso}"/>
         <ui:define name="corpo">
-        	<div><h:outputText value="Sua reserva foi realizada com sucesso."/></div>
-        	<h:link outcome="indexAdmin" value="Voltar"/>
+        	<div><h:outputText value="#{msg.suaReservaSucesso}"/></div>
+        	<h:link outcome="indexAdmin" value="#{msg.voltar}"/>
         </ui:define>
     </ui:composition>
 </html>

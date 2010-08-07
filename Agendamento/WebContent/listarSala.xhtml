@@ -5,13 +5,13 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <ui:composition template="TemplatePadrao.xhtml">
-        <ui:param name="titulo" value="Lista de Salas"/>
+        <ui:param name="titulo" value="#{msg.listSala}"/>
         <ui:define name="corpo">
             <h:form>
                 <h:dataTable value="#{salaUC.salas}" var="sala" binding="#{salaUC.select}" headerClass="cabecalho" rowClasses="impar,par" styleClass="tabela">
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Sala"/>
+                            <h:outputText value="#{msg.sala}"/>
                         </f:facet>
                          <h:commandLink action="#{salaUC.selecione}">
                         	<h:outputText value="#{sala.numeroSala}"/>
@@ -19,19 +19,19 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Bloco"/>
+                            <h:outputText value="#{msg.bloco}"/>
                         </f:facet>
                         <h:outputText value="#{sala.bloco}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Campus"/>
+                            <h:outputText value="#{msg.campus}"/>
                         </f:facet>
                         <h:outputText value="#{sala.campus}"/>
                     </h:column>
                 </h:dataTable>
-                <h:commandLink action="#{salaUC.novo}" value="Novo"/>
-                <h:link outcome="indexAdmin" value="Home"/>
+                <h:commandLink action="#{salaUC.novo}" value="#{msg.novo}"/>
+                <h:link outcome="indexAdmin" value="#{msg.home}"/>
             </h:form>
         </ui:define>
     </ui:composition>

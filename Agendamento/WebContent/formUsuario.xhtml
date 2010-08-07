@@ -5,32 +5,32 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <ui:composition template="TemplatePadrao.xhtml">
-        <ui:param name="titulo" value="Cadastro de Usu&aacute;rios"/>
+        <ui:param name="titulo" value="#{msg.cadUsuario}"/>
         <ui:define name="corpo">
 		<h:form>
 			<h:messages></h:messages>
 			<h:panelGrid columns="3">
-				<h:outputLabel value="Nick"/>
+				<h:outputLabel value="#{msg.nick}:"/>
 				<h:inputText id="nick" value="#{usuarioUC.usuario.nick}" required="true"/>
 				<h:message for="nick"/>
 			
-			    <h:outputLabel value="Senha"/>
+			    <h:outputLabel value="#{msg.senha}:"/>
 				<h:inputSecret id="senha" value="#{usuarioUC.usuario.senha}" required="true"/>
 				<h:message for="senha"/>
 	
-			    <h:outputLabel value="E-Mail"/>
+			    <h:outputLabel value="#{msg.email}:"/>
 				<h:inputText id="email" value="#{usuarioUC.usuario.email}" validator="#{usuarioUC.validarEmail}"/>
 				<h:message for="email"/>
 				
-				<h:outputLabel value="Fun&ccedil;&atilde;o"/>
+				<h:outputLabel value="#{msg.funcao}:"/>
 				<h:selectOneRadio id="funcao" value="#{usuarioUC.usuario.funcao}" required="true">
-					<f:selectItem itemLabel="Administrador" itemValue="a"/>
-					<f:selectItem itemLabel="Professor" itemValue="p"/>
-					<f:selectItem itemLabel="Instalador" itemValue="i"/>
+					<f:selectItem itemLabel="#{msg.administrador}" itemValue="a"/>
+					<f:selectItem itemLabel="#{msg.professor}" itemValue="p"/>
+					<f:selectItem itemLabel="#{msg.instalador}" itemValue="i"/>
 				</h:selectOneRadio>
 			</h:panelGrid>
-			<h:commandButton value="Salvar" action="#{usuarioUC.salvar}"/>
-            <h:commandButton value="Cancelar" action="#{usuarioUC.cancelar}" immediate="true"/>
+			<h:commandButton value="#{msg.salvar}" action="#{usuarioUC.salvar}"/>
+            <h:commandButton value="#{msg.cancelar}" action="#{usuarioUC.cancelar}" immediate="true"/>
 		</h:form>
         </ui:define>
     </ui:composition>
