@@ -59,7 +59,7 @@ public class UsuarioUC {
     	try {
     		JPACrudDao<Usuario> daoProjetor = new JPACrudDao<Usuario>(jpa , Usuario.class);
     		daoProjetor.gravar(usuario);
-        	return "listarProjetor";
+        	return "listarUsuario";
     	} catch (PersistenceException e) {
     		FacesContext.getCurrentInstance().addMessage("nick", new FacesMessage("Nick de usuário já utilizado"));
 			return null;
