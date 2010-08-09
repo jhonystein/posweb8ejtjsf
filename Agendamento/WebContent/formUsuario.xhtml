@@ -8,22 +8,22 @@
         <ui:param name="titulo" value="#{msg.cadUsuario}"/>
         <ui:define name="corpo">
 		<h:form>
-			<h:messages></h:messages>
+			<h:messages styleClass="erroGeral"></h:messages>
 			<h:panelGrid columns="3">
-				<h:outputLabel value="#{msg.nick}:"/>
-				<h:inputText id="nick" value="#{usuarioUC.usuario.nick}" required="true"/>
-				<h:message for="nick"/>
+				<h:outputLabel value="#{msg.nick}*:"/>
+				<h:inputText id="nick" value="#{usuarioUC.usuario.nick}" label="#{msg.nick}" required="true"/>
+				<h:message for="nick" styleClass="erro"/>
 			
-			    <h:outputLabel value="#{msg.senha}:"/>
-				<h:inputSecret id="senha" value="#{usuarioUC.usuario.senha}" required="true"/>
-				<h:message for="senha"/>
+			    <h:outputLabel value="#{msg.senha}*:"/>
+				<h:inputSecret id="senha" value="#{usuarioUC.usuario.senha}" label="#{msg.senha}" required="true"/>
+				<h:message for="senha" styleClass="erro"/>
 	
 			    <h:outputLabel value="#{msg.email}:"/>
-				<h:inputText id="email" value="#{usuarioUC.usuario.email}" validator="#{usuarioUC.validarEmail}"/>
-				<h:message for="email"/>
+				<h:inputText id="email" value="#{usuarioUC.usuario.email}" validator="#{usuarioUC.validarEmail}" label="#{msg.email}"/>
+				<h:message for="email" styleClass="erro"/>
 				
-				<h:outputLabel value="#{msg.funcao}:"/>
-				<h:selectOneRadio id="funcao" value="#{usuarioUC.usuario.funcao}" required="true">
+				<h:outputLabel value="#{msg.funcao}*:"/>
+				<h:selectOneRadio id="funcao" value="#{usuarioUC.usuario.funcao}" label="#{msg.funcao}" required="true">
 					<f:selectItem itemLabel="#{msg.administrador}" itemValue="a"/>
 					<f:selectItem itemLabel="#{msg.professor}" itemValue="p"/>
 					<f:selectItem itemLabel="#{msg.instalador}" itemValue="i"/>

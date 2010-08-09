@@ -14,17 +14,17 @@
 			<fieldset>
     			<legend>Login:</legend>
     			<h:form>
-    				<h:messages></h:messages>
+    				<h:messages styleClass="erroGeral"></h:messages>
 					<h:panelGrid columns="3">
 						<h:outputLabel value="#{msg.nick}:"/>
-						<h:inputText id="nick" value="#{usuarioUC.usuario.nick}"/>
-						<h:message for="nick"/>
+						<h:inputText id="nick" value="#{usuarioUC.usuario.nick}" label="#{msg.nick}"/>
+						<h:message for="nick" styleClass="erro"/>
 			
 					    <h:outputLabel value="#{msg.senha}:"/>
-						<h:inputSecret id="senha" value="#{usuarioUC.usuario.senha}"/>
-						<h:message for="senha"/>
+						<h:inputSecret id="senha" value="#{usuarioUC.usuario.senha}" label="#{msg.senha}"/>
+						<h:message for="senha" styleClass="erro"/>
 					</h:panelGrid>
-					<h:commandButton value="#{msg.logar}:" action="#{usuarioUC.logar}"/>
+					<h:commandButton value="#{msg.logar}" action="#{usuarioUC.logar}"/>
 					<h:commandLink action="#{manipulacaoBancoUC.criarBancoDados}" value="Inicializar banco de dados" immediate="true"/>
 				</h:form>	
 			</fieldset>		
