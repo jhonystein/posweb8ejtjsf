@@ -18,9 +18,21 @@
 	                    </h:column>
 	                    <h:column>
 	                        <f:facet name="header">
+	                            <h:outputText value="Sala"/>
+	                        </f:facet>
+	                        <h:outputText value="#{reserva.sala.numeroSala}"/>                        
+	                    </h:column>
+	                    <h:column>
+	                        <f:facet name="header">
+	                            <h:outputText value="Bloco"/>
+	                        </f:facet>
+	                        <h:outputText value="#{reserva.sala.bloco}"/>                        
+	                    </h:column>
+	                    <h:column>
+	                        <f:facet name="header">
 	                            <h:outputText value="Projetor"/>
 	                        </f:facet>
-	                        <h:selectOneMenu id="projetor">
+	                        <h:selectOneMenu id="projetor" value="#{reserva.projetor}">
 	                        	 <f:selectItem itemLabel="Selecione um projetor" />
 								 <f:selectItems value="#{reserva.projetoresDisponiveis}" var="projetor" itemLabel="#{projetor.numeroPatrimonio}" />
 							</h:selectOneMenu>
@@ -28,7 +40,7 @@
 			
 	                    </h:column>                    
 	                </h:dataTable>	
-	                <h:commandButton value="Confirmar Instala&ccedil;&atilde;o" action="#{instalacaoUC.salvarInstalacao}"/>
+	                <h:commandButton value="Confirmar Instala&ccedil;&atilde;o" action="#{instalacaoUC.salvar}"/>
 				</h:panelGrid>
 			</h:form>
 		</ui:define>

@@ -48,5 +48,11 @@ public class Projetor implements Serializable, IModelo {
 	public void setCampus(int campus) {
 		this.campus = campus;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		Projetor o = (Projetor)obj;
+		return o.codigo == this.codigo;
+	}
 		
 }
