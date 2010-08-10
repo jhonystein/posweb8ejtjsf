@@ -29,7 +29,7 @@
 				<li><h:commandLink action="${reservaUC.novo}" value="Reservar Projetor" /></li>
 			</c:if>
 			<c:if test="${usuarioUC.usuarioLogado.funcao == 'i'}">
-				<li><h:commandLink action="${reservaUC.novaInstalacao}" value="Instalar Projetor" /></li>
+				<li><h:commandLink action="${instalacaoUC.novo}" value="Instalar Projetor" /></li>
 			</c:if> 
 			<li><h:commandLink immediate="true" action="${usuarioUC.logout}" value="Sair" /> <br /></li>
 		</h:form>

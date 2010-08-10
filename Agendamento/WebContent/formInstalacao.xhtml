@@ -10,20 +10,20 @@
 			<h:form>
 				<h:panelGrid columns="3">
 				    <h:outputLabel value="Data:"/>
-					<h:inputText id="data" value="#{reservaUC.reserva.data}" required="true">
+					<h:inputText id="data" value="#{instalacaoUC.reserva.data}" required="true">
 						<f:convertDateTime pattern="dd/MM/yyyy"/>
 					</h:inputText>
 					<h:message for="data"/>
 		
 					<h:outputLabel value="Campus:"/>
-					<h:selectOneRadio id="campus" value="#{reservaUC.reserva.campus}" required="true">
+					<h:selectOneRadio id="campus" value="#{instalacaoUC.reserva.sala.campus}" required="true">
 						<f:selectItem itemLabel="1" itemValue="1"/>
 						<f:selectItem itemLabel="2" itemValue="2"/>
 						<f:selectItem itemLabel="3" itemValue="3"/>
 						<f:selectItem itemLabel="4" itemValue="4"/>
 					</h:selectOneRadio>
 					<h:message for="campus"/>
-					<h:commandButton value="Listar reservas" action="#{reservaUC.reservas}"/> 
+					<h:commandButton value="Listar reservas" action="#{instalacaoUC.reservas}"/> 
 	            </h:panelGrid>
 			</h:form>
 		</ui:define>

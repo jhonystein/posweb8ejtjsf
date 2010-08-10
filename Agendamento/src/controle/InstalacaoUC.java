@@ -49,7 +49,7 @@ public class InstalacaoUC {
 		return "listarInstalacao";
     }
     
-    public String novaInstalacao(){
+    public String novo(){
     	reserva = new Reserva();
     	return "formInstalacao";
     }
@@ -67,7 +67,7 @@ public class InstalacaoUC {
 		return reservasEmAberto;
 	}
 	
-	public String salvarInstalacao() throws Exception{
+	public String salvar() throws Exception{
 		JPAUtil jpa = JPAUtil.getInstance();
     	try {
     		JPAReservaDao daoReserva = new JPAReservaDao(jpa);

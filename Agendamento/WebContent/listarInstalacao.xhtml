@@ -8,8 +8,8 @@
         <ui:param name="titulo" value="Instala&ccedil;&atilde;o de Projetores"/>
         <ui:define name="corpo">
 			<h:form>
-				<h:panelGrid rendered="#{reservaUC.mostrar}">
-					<h:dataTable width="200" value="#{reservaUC.reservasEmAberto}" var="reserva" binding="#{reservaUC.select}" headerClass="cabecalho">
+				<h:panelGrid rendered="#{instalacaoUC.mostrar}">
+					<h:dataTable width="200" value="#{instalacaoUC.reservasEmAberto}" var="reserva" binding="#{reservaUC.select}" headerClass="cabecalho">
 	                    <h:column>
 	                        <f:facet name="header">
 	                            <h:outputText value="Hor&aacute;rio"/>
@@ -28,7 +28,7 @@
 			
 	                    </h:column>                    
 	                </h:dataTable>	
-	                <h:commandButton value="Confirmar Instala&ccedil;&atilde;o" action="#{reservaUC.salvarInstalacao}"/>
+	                <h:commandButton value="Confirmar Instala&ccedil;&atilde;o" action="#{instalacaoUC.salvarInstalacao}"/>
 				</h:panelGrid>
 			</h:form>
 		</ui:define>
