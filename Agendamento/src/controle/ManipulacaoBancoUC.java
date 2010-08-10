@@ -25,7 +25,7 @@ public class ManipulacaoBancoUC {
 		
 		// Trecho exemplificando uso de JDBC
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "root");
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "mysql");
 		Statement st = con.createStatement();
 		st.execute("drop database if exists "+Config.BANCODADOS);
 		st.execute("create database "+Config.BANCODADOS);
