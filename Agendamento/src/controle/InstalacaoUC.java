@@ -2,10 +2,13 @@ package controle;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIData;
+import javax.faces.context.FacesContext;
 
+import modelo.Projetor;
 import modelo.Reserva;
 import util.JPAUtil;
 import dao.JPAReservaDao;
@@ -18,9 +21,9 @@ public class InstalacaoUC {
     private UIData select;
     private boolean mostrarTabela = false;
     private List<Reserva> reservasEmAberto = null;
+    private int indiceReserva = 0;
     
-    public InstalacaoUC() {
-    }
+    public InstalacaoUC() {}
    
     public UIData getSelect() {
         return select;
@@ -37,16 +40,18 @@ public class InstalacaoUC {
     public String reservas() throws Exception{
     	JPAUtil jpa = JPAUtil.getInstance();
     	try {
-    		JPAReservaDao daoReserva = new JPAReservaDao(jpa);
-            reservasEmAberto = daoReserva.listarReservasEmAberto(reserva);
-            for(Reserva reservaAux: reservasEmAberto){
-            	reservaAux.setProjetoresDisponiveis(daoReserva.listaProjetoresDisponiveis(reservaAux));
-            }
+            reservasEmAberto = new JPAReservaDao(jpa).listarReservasEmAberto(reserva);
     		mostrarTabela = true;	
 		} finally {
 			JPAUtil.finalizar();
 		}
 		return "listarInstalacao";
+    }
+    
+    public List<Projetor> getProjetores() throws Exception{
+    	if(indiceReserva == reservasEmAberto.size())
+    		indiceReserva = 0;
+    	return new JPAReservaDao(JPAUtil.getInstance()).listaProjetoresDisponiveis(reservasEmAberto.get(indiceReserva++));
     }
     
     public String novo(){
@@ -64,25 +69,39 @@ public class InstalacaoUC {
     }
 
 	public List<Reserva> getReservasEmAberto() {
-		return reservasEmAberto;
+    	return reservasEmAberto;
 	}
 	
 	public String salvar() throws Exception{
 		JPAUtil jpa = JPAUtil.getInstance();
     	try {
     		JPAReservaDao daoReserva = new JPAReservaDao(jpa);
+    		
+    		for(int proximo = 0; proximo < reservasEmAberto.size(); proximo++){
+    			if(reservasEmAberto.get(proximo) != null){
+	    			for(int anterior = reservasEmAberto.size()-1; anterior > proximo; anterior--){
+	    				if(reservasEmAberto.get(anterior).getProjetor() != null){
+		        			if(reservasEmAberto.get(proximo).getHorario() == reservasEmAberto.get(anterior).getHorario() && 
+		        					reservasEmAberto.get(proximo).getProjetor().getCodigo() == reservasEmAberto.get(anterior).getProjetor().getCodigo()){
+		        				FacesContext.getCurrentInstance().addMessage("projetor", new FacesMessage("Você selecionou o mesmo projetor para duas reservas para o mesmo horário!"));
+		            			return null;
+		        			}    			
+	    				}
+	        		}
+    			}
+    		}
+    		
+    		boolean houveInstalacao = false;
     		for(Reserva reservaAux: reservasEmAberto){
     			if(reservaAux.getProjetor() != null){
 	    			reservaAux.setInstalado(true);
-	    			daoReserva.gravar(reserva);
+	    			daoReserva.gravar(reservaAux);
+	    			houveInstalacao = true;
     			}
     		}
-    		/*if(daoReserva.projetoresReservados(reserva) < daoReserva.projetoresPossiveisReserva(reserva)){
-	    		daoReserva.gravar(reserva);
-	        	return "reservaSucesso";
-    		}else
-    			FacesContext.getCurrentInstance().addMessage("data", new FacesMessage("Não existem projetores disponíveis nesta data"));
-    			return null;*/
+    		if(houveInstalacao){
+    			return "instalacaoSucesso";
+    		}
 		} finally {
 			JPAUtil.finalizar();
 		}

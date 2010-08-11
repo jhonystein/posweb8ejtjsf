@@ -2,7 +2,6 @@ package modelo;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,7 +15,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name="reserva")
@@ -34,7 +32,7 @@ public class Reserva implements Serializable, IModelo {
 	@Id
 	@GeneratedValue
 	@Column(name="cd_reserva")
-	private Long codigo;
+	private Long codigo = 0L;
 	
 	@Column(name="dt_reserva", nullable=false)
 	@Temporal(TemporalType.DATE)
@@ -54,9 +52,6 @@ public class Reserva implements Serializable, IModelo {
 	@JoinColumn(name="cd_projetor")
 	private Projetor projetor;
 	
-	@Transient
-	private List<Projetor> projetoresDisponiveis = null;
-
 	public Long getCodigo() {
 		return codigo;
 	}
@@ -95,14 +90,6 @@ public class Reserva implements Serializable, IModelo {
 
 	public boolean isInstalado() {
 		return instalado;
-	}
-
-	public void setProjetoresDisponiveis(List<Projetor> projetoresDisponiveis) {
-		this.projetoresDisponiveis = projetoresDisponiveis;
-	}
-
-	public List<Projetor> getProjetoresDisponiveis() {
-		return projetoresDisponiveis;
 	}
 
 	public void setSala(Sala sala) {

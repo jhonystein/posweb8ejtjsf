@@ -106,8 +106,7 @@ public class ReservaUC {
     	try {
     		JPAReservaDao daoReserva = new JPAReservaDao(jpa);
     		if(daoReserva.projetoresReservados(reserva) < daoReserva.projetoresPossiveisReserva(reserva)){
-    			System.out.println(reserva.getSala().getCodigo());
-	    		daoReserva.gravar(reserva);
+    			daoReserva.gravar(reserva);
 	        	return "reservaSucesso";
     		}else
     			FacesContext.getCurrentInstance().addMessage("data", new FacesMessage("Não existem projetores disponíveis nesta data"));

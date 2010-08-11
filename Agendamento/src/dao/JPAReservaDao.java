@@ -42,12 +42,6 @@ public class JPAReservaDao extends JPACrudDao<Reserva> {
 		return (Long)q.getSingleResult();
 	}
 	
-	@Override
-	public void gravar(Reserva reserva) throws Exception {
-		if (projetoresPossiveisReserva(reserva) > projetoresReservados(reserva))
-			super.gravar(reserva);
-	}
-
 	public Long projetoresPossiveisReserva(Reserva reserva) {
 		Query q = jpa.getEntityManager().createNamedQuery("projetoresCount");
 		q.setParameter(1, reserva.getSala().getCampus());

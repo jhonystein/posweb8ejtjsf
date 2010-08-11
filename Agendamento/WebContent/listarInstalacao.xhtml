@@ -34,7 +34,7 @@
 	                        </f:facet>
 	                        <h:selectOneMenu id="projetor" value="#{reserva.projetor}">
 	                        	 <f:selectItem itemLabel="Selecione um projetor" />
-								 <f:selectItems value="#{reserva.projetoresDisponiveis}" var="projetor" itemLabel="#{projetor.numeroPatrimonio}" />
+								 <f:selectItems value="#{instalacaoUC.projetores}" var="proj" itemLabel="#{proj.numeroPatrimonio}" />
 							</h:selectOneMenu>
 							<h:message for="projetor"/>
 			
