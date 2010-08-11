@@ -8,6 +8,7 @@
         <ui:param name="titulo" value="Instala&ccedil;&atilde;o de Projetores"/>
         <ui:define name="corpo">
 			<h:form>
+				<h:messages styleClass="erroGeral"></h:messages>
 				<h:panelGrid columns="3">
 				    <h:outputLabel value="Data:"/>
 					<h:inputText id="data" value="#{instalacaoUC.reserva.data}" required="true">
