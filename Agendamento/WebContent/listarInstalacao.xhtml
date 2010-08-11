@@ -8,6 +8,7 @@
         <ui:param name="titulo" value="Instala&ccedil;&atilde;o de Projetores"/>
         <ui:define name="corpo">
 			<h:form>
+				<h:messages styleClass="erroGeral"></h:messages>
 				<h:panelGrid rendered="#{instalacaoUC.mostrar}">
 					<h:dataTable width="200" value="#{instalacaoUC.reservasEmAberto}" var="reserva" binding="#{reservaUC.select}" headerClass="cabecalho">
 	                    <h:column>

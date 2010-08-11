@@ -83,7 +83,7 @@ public class InstalacaoUC {
 	    				if(reservasEmAberto.get(anterior).getProjetor() != null){
 		        			if(reservasEmAberto.get(proximo).getHorario() == reservasEmAberto.get(anterior).getHorario() && 
 		        					reservasEmAberto.get(proximo).getProjetor().getCodigo() == reservasEmAberto.get(anterior).getProjetor().getCodigo()){
-		        				FacesContext.getCurrentInstance().addMessage("projetor", new FacesMessage("Você selecionou o mesmo projetor para duas reservas para o mesmo horário!"));
+		        				FacesContext.getCurrentInstance().addMessage("projetor", new FacesMessage("Você não pode selecionar o mesmo projetor para duas reservas para o mesmo horário!"));
 		            			return null;
 		        			}    			
 	    				}
