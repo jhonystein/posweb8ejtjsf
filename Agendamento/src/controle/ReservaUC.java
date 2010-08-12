@@ -21,18 +21,12 @@ public class ReservaUC {
 
 	private UIData select;
 	private final ArrayList<Integer> horarios = new ArrayList<Integer>();
-    private Reserva reserva = new Reserva();
-    private JPASalaDAO dao;
-    private Sala dadosConfiguracao = new Sala();
+    private Reserva reserva = null;
+    private Sala dadosConfiguracao = null;
 
 	public ReservaUC() {
-		try {
-			dao = new JPASalaDAO(JPAUtil.getInstance());
-			for(int i= 1; i <= 15; i++)
-	    		horarios.add(i);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		for(int i= 1; i <= 15; i++)
+    		horarios.add(i);
 	}
 
 	public UIData getSelect() {
@@ -55,11 +49,11 @@ public class ReservaUC {
     	return horarios;
     }
 	public List<Sala> getSalasPeloBloco() throws Exception{
-    	return dao.listaSalasPeloBlocoECampus(dadosConfiguracao);
+    	return new JPASalaDAO(JPAUtil.getInstance()).listaSalasPeloBlocoECampus(dadosConfiguracao);
     }
     
     public List<String> getBlocosPeloCampus() throws Exception{
-    	return dao.listaBlocosPeloCampus(dadosConfiguracao);
+    	return new JPASalaDAO(JPAUtil.getInstance()).listaBlocosPeloCampus(dadosConfiguracao);
     }
         
     public void setDadosConfiguracao(Sala dadosConfiguracao) {
@@ -70,18 +64,7 @@ public class ReservaUC {
 		return dadosConfiguracao;
 	}
     
-	public List<Sala> getSalas() {
-		List<Sala> l;
-		try {
-			l = dao.listarTodos();
-		} catch (Exception e) {
-			l = new ArrayList<Sala>();
-			e.printStackTrace();
-		}
-		return l;
-	}
-	
-    public String salvar() throws Exception{
+	public String salvar() throws Exception{
     	if(reserva.getSala() == null){
     		FacesContext.getCurrentInstance().addMessage("data", new FacesMessage("Selecione uma sala válida!"));
 			return null;
