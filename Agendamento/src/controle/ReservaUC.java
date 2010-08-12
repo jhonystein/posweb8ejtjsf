@@ -8,7 +8,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIData;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ValueChangeEvent;
 
 import modelo.Reserva;
 import modelo.Sala;
@@ -24,8 +23,6 @@ public class ReservaUC {
 	private final ArrayList<Integer> horarios = new ArrayList<Integer>();
     private Reserva reserva = new Reserva();
     private JPASalaDAO dao;
-    private List<String> blocosPeloCampus = null;
-    private List<Sala> salasPeloBloco = null;
     private Sala dadosConfiguracao = new Sala();
 
 	public ReservaUC() {
@@ -57,12 +54,12 @@ public class ReservaUC {
 	public List<Integer> getHorarios(){
     	return horarios;
     }
-	public List<Sala> getSalasPeloBloco(){
-    	return salasPeloBloco;
+	public List<Sala> getSalasPeloBloco() throws Exception{
+    	return dao.listaSalasPeloBlocoECampus(dadosConfiguracao);
     }
     
-    public List<String> getBlocosPeloCampus(){
-    	return blocosPeloCampus;
+    public List<String> getBlocosPeloCampus() throws Exception{
+    	return dao.listaBlocosPeloCampus(dadosConfiguracao);
     }
         
     public void setDadosConfiguracao(Sala dadosConfiguracao) {
@@ -84,24 +81,12 @@ public class ReservaUC {
 		return l;
 	}
 	
-	public void atualizouCampus(ValueChangeEvent event) throws Exception{
-		dadosConfiguracao.setCampus(Integer.valueOf(String.valueOf(event.getNewValue())));
-    	atualizarDadosCombo();
-    }
-	
-	public void atualizarSalasPeloBloco(ValueChangeEvent event) throws Exception{
-		dadosConfiguracao.setBloco((String)event.getNewValue());
-    	salasPeloBloco = dao.listaSalasPeloBlocoECampus(dadosConfiguracao);            	
-    }
-    
-    private void atualizarDadosCombo()throws Exception{
-    	blocosPeloCampus = dao.listaBlocosPeloCampus(dadosConfiguracao);
-		if(blocosPeloCampus.size() > 0)//atribuir o valor do primeiro bloco para vir a pesquisa com as salas
-			dadosConfiguracao.setBloco(blocosPeloCampus.get(0));
-		salasPeloBloco = dao.listaSalasPeloBlocoECampus(dadosConfiguracao);  
-   }
-    
     public String salvar() throws Exception{
+    	if(reserva.getSala() == null){
+    		FacesContext.getCurrentInstance().addMessage("data", new FacesMessage("Selecione uma sala válida!"));
+			return null;
+    	}
+    	
     	JPAUtil jpa = JPAUtil.getInstance();
     	try {
     		JPAReservaDao daoReserva = new JPAReservaDao(jpa);
@@ -119,7 +104,6 @@ public class ReservaUC {
     public String novo() throws Exception{
         reserva = new Reserva();
         dadosConfiguracao = new Sala();
-        atualizarDadosCombo();
         return "formReserva";
     }
 

@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.persistence.Query;
 
-import modelo.Projetor;
-import modelo.Reserva;
 import modelo.Sala;
 import util.JPAUtil;
 
