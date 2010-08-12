@@ -49,7 +49,7 @@ public class InstalacaoUC {
     }
     
     public List<Projetor> getProjetores() throws Exception{
-    	if(indiceReserva == reservasEmAberto.size())
+    	if(indiceReserva >= reservasEmAberto.size())
     		indiceReserva = 0;
     	return new JPAReservaDao(JPAUtil.getInstance()).listaProjetoresDisponiveis(reservasEmAberto.get(indiceReserva++));
     }
