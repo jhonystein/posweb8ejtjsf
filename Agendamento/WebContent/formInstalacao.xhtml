@@ -12,7 +12,7 @@
 				<h:panelGrid columns="3">
 				    <h:outputLabel value="Data:"/>
 					<h:inputText id="data" value="#{instalacaoUC.reserva.data}" required="true">
-						<f:convertDateTime pattern="dd/MM/yyyy"/>
+						<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
 					</h:inputText>
 					<h:message for="data"/>
 		
