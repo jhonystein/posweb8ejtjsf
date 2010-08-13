@@ -5,7 +5,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <ui:composition template="TemplatePadrao.xhtml">
-        <ui:param name="titulo" value="Instala&ccedil;&atilde;o de Projetores"/>
+        <ui:param name="titulo" value="#{msg.instalProjetor}"/>
         <ui:define name="corpo">
 			<h:form>
 				<h:messages styleClass="erroGeral"></h:messages>
@@ -13,35 +13,35 @@
 					<h:dataTable width="200" value="#{instalacaoUC.reservasEmAberto}" var="reserva" binding="#{reservaUC.select}" headerClass="cabecalho">
 	                    <h:column>
 	                        <f:facet name="header">
-	                            <h:outputText value="Hor&aacute;rio"/>
+	                            <h:outputText value="#{msg.horario}"/>
 	                        </f:facet>
 	                        <h:outputText value="#{reserva.horario}"/>                        
 	                    </h:column>
 	                    <h:column>
 	                        <f:facet name="header">
-	                            <h:outputText value="Sala"/>
+	                            <h:outputText value="#{msg.sala}"/>
 	                        </f:facet>
 	                        <h:outputText value="#{reserva.sala.numeroSala}"/>                        
 	                    </h:column>
 	                    <h:column>
 	                        <f:facet name="header">
-	                            <h:outputText value="Bloco"/>
+	                            <h:outputText value="#{msg.bloco}"/>
 	                        </f:facet>
 	                        <h:outputText value="#{reserva.sala.bloco}"/>                        
 	                    </h:column>
 	                    <h:column>
 	                        <f:facet name="header">
-	                            <h:outputText value="Projetor"/>
+	                            <h:outputText value="#{msg.projetor}"/>
 	                        </f:facet>
 	                        <h:selectOneMenu id="projetor" value="#{reserva.projetor}">
-	                        	 <f:selectItem itemLabel="Selecione um projetor" />
+	                        	 <f:selectItem itemLabel="#{msg.selecioneProjetor}" />
 								 <f:selectItems value="#{instalacaoUC.projetores}" var="proj" itemLabel="#{proj.numeroPatrimonio}" />
 							</h:selectOneMenu>
 							<h:message for="projetor"/>
 			
 	                    </h:column>                    
 	                </h:dataTable>	
-	                <h:commandButton value="Confirmar Instala&ccedil;&atilde;o" action="#{instalacaoUC.salvar}"/>
+	                <h:commandButton value="#{msg.confirmarInstal}" action="#{instalacaoUC.salvar}"/>
 				</h:panelGrid>
 			</h:form>
 		</ui:define>

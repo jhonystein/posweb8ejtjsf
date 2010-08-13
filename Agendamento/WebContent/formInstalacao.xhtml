@@ -5,18 +5,18 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <ui:composition template="TemplatePadrao.xhtml">
-        <ui:param name="titulo" value="Instala&ccedil;&atilde;o de Projetores"/>
+        <ui:param name="titulo" value="#{msg.instalProjetor}"/>
         <ui:define name="corpo">
 			<h:form>
 				<h:messages styleClass="erroGeral"></h:messages>
 				<h:panelGrid columns="3">
-				    <h:outputLabel value="Data:"/>
+				    <h:outputLabel value="#{msg.data}:"/>
 					<h:inputText id="data" value="#{instalacaoUC.reserva.data}" required="true">
 						<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
 					</h:inputText>
 					<h:message for="data"/>
 		
-					<h:outputLabel value="Campus:"/>
+					<h:outputLabel value="#{msg.campus}:"/>
 					<h:selectOneRadio id="campus" value="#{instalacaoUC.reserva.sala.campus}" required="true">
 						<f:selectItem itemLabel="1" itemValue="1"/>
 						<f:selectItem itemLabel="2" itemValue="2"/>
@@ -24,7 +24,7 @@
 						<f:selectItem itemLabel="4" itemValue="4"/>
 					</h:selectOneRadio>
 					<h:message for="campus"/>
-					<h:commandButton value="Listar reservas" action="#{instalacaoUC.reservas}"/> 
+					<h:commandButton value="#{msg.listarReservas}" action="#{instalacaoUC.reservas}"/> 
 	            </h:panelGrid>
 			</h:form>
 		</ui:define>
